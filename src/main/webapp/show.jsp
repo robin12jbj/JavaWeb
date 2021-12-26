@@ -9,8 +9,6 @@
 <link rel="stylesheet" href="./css/styles.css" type="text/css" />
 
 <SCRIPT language=JavaScript type=text/JavaScript>
-<!--
-	-->
 </SCRIPT>
 
 </HEAD>
@@ -22,7 +20,7 @@
 		</tr>
 		<tr>
 			<TD
-				style="FONT-SIZE: 24pt; FILTER: blur(add = 1, direction = 120, strength = 5); WIDTH: 100%; COLOR: #000000; FONT-FAMILY: arial; POSITION: relative"
+				style="FONT-SIZE: 24pt; WIDTH: 100%; COLOR: #000000; FONT-FAMILY: arial; POSITION: relative"
 				noWrap><B><span class="STYLE1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;XXXX</span>网上订餐系统</B></TD>
 		</tr>
 		<tr>
@@ -62,6 +60,7 @@
 			</TR>
 		</TBODY>
 	</TABLE>
+
 	<TABLE cellSpacing=0 cellPadding=0 width=776 align=center border=0>
 		<TBODY>
 			<TR vAlign=top>
@@ -251,5 +250,9 @@
 							</td>
 						</tr>
 					</table>
+				</TD>
+
+		<TBODY>
+	</TABLE>
 </body>
 </html>
