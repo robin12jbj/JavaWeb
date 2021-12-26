@@ -33,5 +33,4 @@ public class UsersDAOMySQLImpl extends baseDAO implements IUsersDAO {
 		Object[] params  = {users.getUsername(),users.getPwd()};
 		return findObjs(sql, params,Users.class);
 	}
-
 }

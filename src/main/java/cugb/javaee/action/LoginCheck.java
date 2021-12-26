@@ -50,6 +50,7 @@ public class LoginCheck extends baseControl {
 			String password = request.getParameter("loginPass");
 			logger.debug(username + "," + password);
 			HttpSession session = request.getSession();
+			//此处创建的是实现接口的类UserServiceImpl
 			IUserService userserv = (IUserService) DAOFactory.newInstance("IUserService");
 			Users loginuser = new Users();
 			loginuser.setUsername(username);

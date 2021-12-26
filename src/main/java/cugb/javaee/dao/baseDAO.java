@@ -41,8 +41,7 @@ public class baseDAO {
 		ArrayList userarray = new ArrayList();
 		try {
 			Connection conn = JDBCUtils.getConnection();
-			// step 3 statement
-//				String sql = "select * from users";
+			System.out.println(sql);
 			PreparedStatement ps = conn.prepareStatement(sql);
 			if (params != null) {
 				ParameterMetaData psmeta = ps.getParameterMetaData();
@@ -50,17 +49,9 @@ public class baseDAO {
 					ps.setObject(i + 1, params[i]);
 				}
 			}
-			// step 4 resultset
 			ResultSet rs = ps.executeQuery();
 			while (rs.next()) {
-				// System.out.println(rs.getString("userid") + "," +rs.getString("username") +
-				// ","
-				// + rs.getString("password"));
-//					Users users = new Users();
 				Object obj = MappingObj(rs, clazz);
-//					users.setUserid(rs.getShort("userid"));
-//					users.setUsername(rs.getString("username"));
-//					users.setPwd(rs.getString("password"));
 				userarray.add(obj);
 			}
 			// step free

@@ -1,5 +1,4 @@
 package cugb.javaee.util;
-
 import java.io.IOException;
 import java.io.InputStream;
 import java.sql.Connection;
@@ -8,9 +7,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Properties;
-
 import javax.sql.DataSource;
-
 import org.apache.commons.dbcp.BasicDataSourceFactory;
 
 public class JDBCUtils {
@@ -30,11 +27,6 @@ public class JDBCUtils {
 				getResourceAsStream("dbcpconfig.properties");
 			Properties prop = new Properties();
 			prop.load(in);
-//			Driver = prop.getProperty("Driver");
-//			url = prop.getProperty("url");
-//			user = prop.getProperty("user");
-//			pwd = prop.getProperty("pwd");
-//			Class.forName(Driver);
 			ds = BasicDataSourceFactory.createDataSource(prop);
 		}catch (IOException e) {
 			e.printStackTrace();
@@ -45,9 +37,8 @@ public class JDBCUtils {
 	}
 	public static Connection getConnection() {
 		Connection conn = null;
-		try {			
-			// step 2 connection
-//			conn = DriverManager.getConnection(url, user, pwd);
+		try {
+			System.out.println("JDBCUtils 到了getConnection此处！");
 			conn = ds.getConnection();
 		} catch (SQLException e) {
 			e.printStackTrace();
