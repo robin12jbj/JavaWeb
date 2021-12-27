@@ -156,9 +156,6 @@
 																	<c:forEach var="currentdish"
 																			   items="${requestScope.pageModel.list}"
 																			   varStatus="status">
-																	<c:if test="${status.index%2==0}">
-																	<TR>
-																		</c:if>
 																	<div class="col-md-3">
 																		<div class="thumbnail">
 																			<img class="img-circle" src="${currentdish.imag}" alt="${currentdish.dishname}">
@@ -170,65 +167,11 @@
 																			</p>
 																		</div>
 																	</div>
-																			<c:if test="${(status.index+1)%2==0}">
-																	</TR>
-																	</c:if>
 																	</c:forEach>
 																</div>
 															</div>
 														</div>
 													</div>
-
-<%--													<TABLE height="100%" cellSpacing=1 cellPadding=2 border=0>--%>
-<%--														<TBODY>--%>
-<%--														<c:forEach var="currentdish"--%>
-<%--																   items="${requestScope.pageModel.list}"--%>
-<%--																   varStatus="status">--%>
-<%--															<c:if test="${status.index%2==0}">--%>
-<%--																<TR>--%>
-<%--															</c:if>--%>
-<%--&lt;%&ndash;															<TD vAlign=top width=90 height=90><A href="dishdetails.jsp?dishid=${currentdish.dishid}"&ndash;%&gt;--%>
-<%--&lt;%&ndash;																								 target=_blank><IMG height=80 alt=点击图片查看内容&ndash;%&gt;--%>
-<%--&lt;%&ndash;																													src="${currentdish.imag}" width=80 border=0></A></TD>&ndash;%&gt;--%>
-<%--&lt;%&ndash;															<TD vAlign=top>&ndash;%&gt;--%>
-<%--&lt;%&ndash;																<TABLE cellSpacing=1 cellPadding=0 width="100%"&ndash;%&gt;--%>
-<%--&lt;%&ndash;																	   align=center border=0>&ndash;%&gt;--%>
-<%--&lt;%&ndash;																	<TBODY>&ndash;%&gt;--%>
-<%--&lt;%&ndash;																	<TR>&ndash;%&gt;--%>
-<%--&lt;%&ndash;																		<TD><A href="dishdetails.jsp?dishid=${currentdish.dishid}" target=_blank><STRONG>${currentdish.dishname}</STRONG></A></TD>&ndash;%&gt;--%>
-<%--&lt;%&ndash;																	</TR>&ndash;%&gt;--%>
-<%--&lt;%&ndash;																	<TR>&ndash;%&gt;--%>
-<%--&lt;%&ndash;																		<TD height=21><FONT color=#ff0000>现价：${currentdish.price}元</FONT><BR>&ndash;%&gt;--%>
-<%--&lt;%&ndash;																			<a href="dishdetails.jsp?dishid=${currentdish.dishid}">美味可口</a>！</TD>&ndash;%&gt;--%>
-<%--&lt;%&ndash;																	</TR>&ndash;%&gt;--%>
-<%--&lt;%&ndash;																	</TBODY>&ndash;%&gt;--%>
-<%--&lt;%&ndash;																</TABLE>&ndash;%&gt;--%>
-<%--&lt;%&ndash;															</TD>&ndash;%&gt;--%>
-<%--															<c:if test="${(status.index+1)%2==0}">--%>
-<%--																</TR>--%>
-<%--															</c:if>--%>
-<%--														</c:forEach>--%>
-<%--														<TR>--%>
-<%--															<TD height=28>编号: </TD>--%>
-<%--															<TD>--%>
-<%--																<TABLE cellSpacing=1 cellPadding=0 width=145 border=0>--%>
-<%--																	<TBODY>--%>
-<%--																	<TR>--%>
-<%--																		<TD align="middle" width="70"><a href="#">--%>
-<%--																			<img src="images/buy_cn.gif" border="0"--%>
-<%--																				 longdesc="shoppingCart.html" width="60"--%>
-<%--																				 height="20">--%>
-<%--																		</a></TD>--%>
-<%--																		<TD align=middle width=70><A href=#--%>
-<%--																									 target=_blank> <IMG src="images/detail_cn.gif"--%>
-<%--																														 border=0 width="60" height="20"></A></TD>--%>
-<%--																	</TR>--%>
-<%--																	</TBODY>--%>
-<%--																</TABLE>--%>
-<%--															</TD>--%>
-<%--														</TR>--%>
-<%--														</TBODY>--%>
-<%--													</TABLE>--%>
 										</TABLE>
 							</TABLE>
 
