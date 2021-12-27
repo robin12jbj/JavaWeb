@@ -75,17 +75,17 @@
 						<TD>
 							<div class="panel panel-primary">
 								<div class="panel-body">
-									<div class="row" width="936px" height="660px">
+									<div class="row">
 										<c:forEach var="currentdish"
 												   items="${requestScope.pageModel.list}"
 												   varStatus="status">
 											<div class="col-lg-4">
 												<div class="thumbnail">
-													<img class="img-circle" style="padding:5px" src="${currentdish.imag}" alt="${currentdish.dishname}" width="100px" height="100px">
+													<img style="padding:5px" src="${currentdish.imag}" alt="${currentdish.dishname}" height="75px">
 													<p style="text-align: center">${currentdish.dishname}</p>
 													<p style="text-align: center">现价: ${currentdish.price}元</p>
 													<p style="text-align: center">${currentdish.descrp}</p>
-													<p style="text-align: center">
+													<p style="text-align: center"  style="padding-bottom: 10px;">
 														<a href="dishdetails.jsp?dishid=${currentdish.dishid}"><img src="images/detail_cn.gif" width="60" height="20"></a>
 													</p>
 												</div>

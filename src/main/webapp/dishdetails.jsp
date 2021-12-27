@@ -200,13 +200,12 @@
                     <td>
                         <table width="145" border="0" cellspacing="1" cellpadding="0">
                             <tr>
-                                <form action="/AddToCart" method="post">
+                                <form action="AddToCart" method="get" name="addtocart">
                                 <input type="text" name="quantity" value="1">
                                 <input type="hidden" name="dishid" value=<%=myDish.getDishid()%>
-                                <td align="center" width="70">
-                                    <input type="submit"  style="background-image:url('/images/buy_cn.gif')">
-
-                                </td>
+                                    <td align="center" width="70">
+                                        <input type="submit"  style="background-image:url('/images/buy_cn.gif')" value="添加">
+                                    </td>
                                 </form>
                             </tr>
                         </table>

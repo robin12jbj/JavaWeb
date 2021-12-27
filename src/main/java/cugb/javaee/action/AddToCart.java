@@ -26,7 +26,8 @@ public class AddToCart extends HttpServlet {
         super.doGet(request, response);
         //传入dishid和数量
         int dishid=Integer.parseInt(request.getParameter("dishid"));
-        int quanity=Integer.parseInt(request.getParameter("quanity"));
+        int quanity=Integer.parseInt(request.getParameter("quantity"));
+        System.out.println(dishid);System.out.println(quanity);
         HttpSession session = request.getSession();
         //判断购物车是否有dishid对应的，若有则在原来的基础上添加数量
         //若无，则将该Cart添加到session中
@@ -40,6 +41,7 @@ public class AddToCart extends HttpServlet {
             Dish myDish= (Dish) dishArrayList.get(0);
             myCartItem=new CartItem(myDish,quanity);
             myCart.getMenus().put(dishid,myCartItem);
+            System.out.println("到达AddToCart");
         }
 
 
