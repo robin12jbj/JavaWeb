@@ -25,7 +25,7 @@ public class DishDAOMySQLImpl extends baseDAO implements IDishDAO {
 	}
 
 	@Override
-	public ArrayList findDishesBy(String sql, Object[] params) {
+	public ArrayList<Dish> findDishesBy(String sql, Object[] params) {
 			return findObjs(sql, params,Dish.class);
 	}
 

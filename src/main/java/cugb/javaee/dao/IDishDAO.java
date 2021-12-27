@@ -6,7 +6,7 @@ import java.util.ArrayList;
 public interface IDishDAO {
 
 	/***
-	 * findDishes
+	 * findDishesBy
 	 * @return
 	 */
 	ArrayList findDishes();

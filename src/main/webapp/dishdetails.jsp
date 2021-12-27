@@ -23,10 +23,11 @@
 </HEAD>
 <BODY leftMargin=0 topMargin=0 marginheight="0" marginwidth="0">
 <%
-   IDishDAO iDishDAO=new DishDAOMySQLImpl();
-   System.out.println(iDishDAO.getTotalDishRecords());
-   Dish myDish=new Dish();
 
+    int dishid=Integer.parseInt(request.getParameter("dishid"));
+    IDishService dishService=(IDishService) DAOFactory.newInstance("IDishService");
+    ArrayList<Dish> dishArrayList= dishService.findDishesBy(dishid);
+    Dish myDish= (Dish) dishArrayList.get(0);
 %>
 <table cellSpacing=0 cellPadding=0 width=776 align=center border=0>
     <tr>

@@ -19,5 +19,8 @@ public interface IDishService {
 	 */
 	public int getTotalRecords();
 
-	public ArrayList findDishes();
+
+	public ArrayList findDishes();//成功
+
+	public ArrayList findDishesBy(int dishid);//根据菜号找到菜品详细内容
 }

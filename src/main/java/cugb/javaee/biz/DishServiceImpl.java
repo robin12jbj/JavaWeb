@@ -26,9 +26,18 @@ public class DishServiceImpl implements IDishService {
 	@Override
 	public ArrayList findDishes() {
 		IDishDAO dishDAO = (IDishDAO) DAOFactory.newInstance("IDishDAO");
-		String sql = "select *from dish";
-		Object[] params ={};//返回mysql中指定行数和指定数量的菜
-		return dishDAO.findDishes();
+		String sql ="select dishid Dishid,name Dishname,price Price,img Imag,"
+				+ "description Descrp from dish where dishid = ?";
+		Object[] params ={10};//返回mysql中指定行数和指定数量的菜
+		return dishDAO.findDishesBy(sql,params);//可以获得Dish
+	}
+
+	public ArrayList findDishesBy(int dishid){
+		IDishDAO dishDAO = (IDishDAO) DAOFactory.newInstance("IDishDAO");
+		String  sql2 ="select dishid Dishid,name Dishname,price Price,img Imag,"
+				+ "description Descrp from dish where dishid = ?";
+		Object[] params ={dishid};//返回mysql中指定行数和指定数量的菜
+		return dishDAO.findDishesBy(sql2,params);
 	}
 
 
