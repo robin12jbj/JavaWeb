@@ -8,7 +8,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Properties;
 import javax.sql.DataSource;
-import org.apache.commons.dbcp.BasicDataSourceFactory;
+import org.apache.commons.dbcp2.BasicDataSourceFactory;
 
 public class JDBCUtils {
 	private JDBCUtils() {

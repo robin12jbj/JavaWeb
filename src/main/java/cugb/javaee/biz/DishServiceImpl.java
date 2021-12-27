@@ -12,7 +12,7 @@ public class DishServiceImpl implements IDishService {
 		IDishDAO dishDAO = (IDishDAO) DAOFactory.newInstance("IDishDAO");
 		String sql = "select dishid Dishid,name Dishname,price Price,img Imag,"
 				+ "description Descrp from dish limit ?,?";
-		Object[] params ={(pageNo-1)*pageSize,pageSize};
+		Object[] params ={(pageNo-1)*pageSize,pageSize};//返回mysql中指定行数和指定数量的菜品
 		return dishDAO.findDishesBy(sql,params);
 		
 	}

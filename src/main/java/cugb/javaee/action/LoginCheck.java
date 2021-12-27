@@ -65,6 +65,7 @@ public class LoginCheck extends baseControl {
 			HttpSession session = request.getSession();
 			IUserService userserv = (IUserService) DAOFactory.newInstance("IUserService");
 				int pageNo = Integer.parseInt(request.getParameter("pageNo"));
+				//获取页数信息
 				pageList(request, response, pageNo);
 		}
 		
@@ -73,11 +74,11 @@ public class LoginCheck extends baseControl {
 	private void pageList(HttpServletRequest request, HttpServletResponse response, int pageNo)
 			throws ServletException, IOException {
 		IDishService dishserv = (IDishService) DAOFactory.newInstance("IDishService");
-		ArrayList<Dish> dishlist = dishserv.findDish4PageList(pageNo, 6);
+		ArrayList<Dish> dishlist = dishserv.findDish4PageList(pageNo, 6);//获得菜品的数组
 		logger.debug(dishlist);
-		int totalRecords = dishserv.getTotalRecords();
+		int totalRecords = dishserv.getTotalRecords();//获取总共菜品数量
 		logger.debug(totalRecords);
-		PageModel<Dish> pageModel = new PageModel<Dish>(totalRecords, pageNo, 6, dishlist);
+		PageModel<Dish> pageModel = new PageModel<Dish>(totalRecords, pageNo, 6, dishlist);//构造PageModel<Dish>
 		request.setAttribute("pageModel", pageModel);
 		// 跳转到show.jsp页面
 		RequestDispatcher rd = request.getRequestDispatcher("/show.jsp");

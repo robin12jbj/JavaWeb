@@ -10,8 +10,8 @@
 
 <SCRIPT language=JavaScript type=text/JavaScript>
 </SCRIPT>
-
 </HEAD>
+<%--此处为菜品的展示页面--%>
 <BODY leftMargin=0 topMargin=0 marginheight="0" marginwidth="0">
 	<table cellSpacing=0 cellPadding=0 width=776 align=center border=0>
 		<tr>
@@ -148,6 +148,7 @@
 							</TR>
 						</TBODY>
 					</TABLE>
+					<%--下面为菜品展示功能--%>
 					<TABLE cellSpacing=0 cellPadding=0 width="96%" align=center
 						border=0>
 						<TBODY>
@@ -177,7 +178,7 @@
 																<c:if test="${status.index%2==0}">
 																	<TR>
 																</c:if>
-																<TD vAlign=top width=90 height=90><A href=#
+																<TD vAlign=top width=90 height=90><A href="dishdetails.jsp?dishid=${currentdish.dishid}"
 																	target=_blank><IMG height=80 alt=点击图片查看内容
 																		src="${currentdish.imag}" width=80 border=0></A></TD>
 																<TD vAlign=top>
@@ -185,11 +186,11 @@
 																		align=center border=0>
 																		<TBODY>
 																			<TR>
-																				<TD><A href=# target=_blank><STRONG>${currentdish.dishname}</STRONG></A></TD>
+																				<TD><A href="dishdetails.jsp?dishid=${currentdish.dishid}" target=_blank><STRONG>${currentdish.dishname}</STRONG></A></TD>
 																			</TR>
 																			<TR>
-																				<TD height=21><FONT color=#ff0000>现价：人民币5元</FONT><BR>
-																					<a href="#">美味可口</a>！</TD>
+																				<TD height=21><FONT color=#ff0000>现价：${currentdish.price}元</FONT><BR>
+																					<a href="dishdetails.jsp?dishid=${currentdish.dishid}">美味可口</a>！</TD>
 																			</TR>
 																		</TBODY>
 																	</TABLE>
@@ -199,7 +200,7 @@
 																</c:if>
 															</c:forEach>
 															<TR>
-																<TD height=28>编号: 22</TD>
+																<TD height=28>编号: </TD>
 																<TD>
 																	<TABLE cellSpacing=1 cellPadding=0 width=145 border=0>
 																		<TBODY>
@@ -221,6 +222,8 @@
 													</TABLE>
 									</TABLE>
 					</TABLE>
+
+					<%--下面为分页功能--%>
 					<table width="95%" height="30" border="0" align="center"
 						cellpadding="0" cellspacing="0">
 						<tr>
@@ -235,13 +238,16 @@
 								<div align="right">
 									<a name="btnTopPage" id="btnTopPage"
 										href="logincheck?action=pagelist&pageNo=${requestScope.pageModel.top}"
-										title="首页">|&lt;&lt; </a>&nbsp; <a name="btnPreviousPage"
+										title="首页">|&lt;&lt; </a>&nbsp;
+									<a name="btnPreviousPage"
 										id="btnPreviousPage"
 										href="logincheck?action=pagelist&pageNo=${requestScope.pageModel.prev}"
-										title="上页"> &lt; </a>&nbsp; <a name="btnNextPage"
+										title="上页"> &lt; </a>&nbsp;
+									<a name="btnNextPage"
 										id="btnNextPage"
 										href="logincheck?action=pagelist&pageNo=${requestScope.pageModel.next}"
-										title="下页"> &gt; </a>&nbsp; <a name="btnBottomPage"
+										title="下页"> &gt; </a>&nbsp;
+									<a name="btnBottomPage"
 										id="btnBottomPage"
 										href="logincheck?action=pagelist&pageNo=${requestScope.pageModel.bottom}"
 										title="尾页"> &gt;&gt;|</a>

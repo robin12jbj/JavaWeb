@@ -27,6 +27,7 @@ public class baseDAO {
 			PreparedStatement ps = conn.prepareStatement(sql);
 			ResultSet rs = ps.executeQuery();
 			while (rs.next()) {
+				//获取查询结果中的第一行数据，为count(*),总共菜品数量
 				return rs.getInt(1);
 			}
 		} catch (SQLException e) {
@@ -66,15 +67,12 @@ public class baseDAO {
 		int records = 0;
 		try {
 			Connection conn = JDBCUtils.getConnection();
-			// step 3 statement
-//			String sql = "update users set password=? where userid=?";			
 			PreparedStatement ps = conn.prepareStatement(sql);
 			ParameterMetaData psmeta = ps.getParameterMetaData();
 			for (int i = 0; i < psmeta.getParameterCount(); i++) {
 				ps.setObject(i + 1, params[i]);
 			}
-//			ps.setString(1, pwd);
-//			ps.setInt(2, userid);
+
 			records = ps.executeUpdate();
 			// step free
 			JDBCUtils.free(null, ps, conn);
@@ -86,10 +84,6 @@ public class baseDAO {
 	}
 
 	private Object MappingObj(ResultSet rs, Class clazz) throws SQLException {
-		// Users users = new Users();
-		// users.setUserid(rs.getInt(1));
-		// users.setUsername(rs.getString(2));
-		// users.setPassword(rs.getString("password"));
 		// 实例化对象
 		Object obj;
 		try {
