@@ -42,60 +42,6 @@
 	<TABLE  cellSpacing=0 cellPadding=0 width=100% border=0>
 		<TBODY>
 		<TR>
-			<!--左侧图片-->
-			<TD width=15% background="images/002.gif">
-				<TABLE cellSpacing=0 cellPadding=0 width=100% border=0>
-					<TBODY>
-					<TR>
-						<TD><IMG height=234 src="images/left_top.jpg" width=100%></TD>
-					</TR>
-					</TBODY>
-				</TABLE>
-				<TABLE cellSpacing=0 cellPadding=0 width="100%" border=0>
-					<TBODY>
-					<TR>
-						<TD align=middle height=30><FONT color=#000000> <SCRIPT
-								language=javascript src="images/DateTime2.js"></SCRIPT> <SCRIPT
-								language=javascript>tick('cn');</SCRIPT> </FONT></TD>
-					</TR>
-					</TBODY>
-				</TABLE>
-				<TABLE cellSpacing=0 cellPadding=0 width="100%" border=0>
-					<TBODY>
-					<TR>
-						<TD>　</TD>
-					</TR>
-					<TR>
-						<TD background="images/003.gif" height=4></TD>
-					</TR>
-					<TR>
-						<TD>　</TD>
-					</TBODY>
-				</TABLE>
-				<TABLE cellSpacing=0 cellPadding=0 width="100%" border=0>
-					<TBODY>
-					<TR>
-						<TD>　</TD>
-					</TR>
-					<TR>
-						<TD background="images/003.gif" height=4></TD>
-					</TR>
-					<TR>
-						<TD align=middle>
-							<TABLE cellSpacing=0 cellPadding=0 width="100%" border=0>
-								<TBODY>
-								<TR>
-									<TD>　</TD>
-								</TR>
-								</TBODY>
-							</TABLE>
-						</TD>
-					</TR>
-					</TBODY>
-				</TABLE>
-			</TD>
-
-			<!--右侧-->
 			<TD style="padding-left: 10%;padding-right: 10%">
 				<TABLE cellSpacing=0 cellPadding=0 width="100%" border=0>
 					<TBODY>
@@ -120,62 +66,39 @@
 					<TR>
 						<TD align=right background="images/004.gif" height=19></TD>
 					</TR>
-					</TBODY>
-				</TABLE>
-				<TABLE cellSpacing=0 cellPadding=0 width="96%" align=center border=0>
-					<TBODY>
-					<TR valign="top">
+					<TR  bgColor=#dadada>
+						<TD width="100%" style="padding-right: 10%"><a href="#"> <img
+								src="images/lcart_cn.gif" border=0 width="97" height="30"></a></TD>
+					</TR>
+					<TR>
+						<%--下面为菜品展示功能--%>
 						<TD>
-							<%--下面为菜品展示功能--%>
-							<TABLE cellSpacing=0 cellPadding=0 width="96%" align=center
-								   border=0>
-								<TBODY>
-								<TR>
-									<TD>
-
-										<TABLE cellSpacing=1 cellPadding=1 width="100%" align=center
-											   bgColor=#c0c0c0 border=0>
-											<TBODY>
-											<TR bgColor=#dadada>
-
-												<TD width="100%" align="right"><a href="#"> <img
-														src="images/lcart_cn.gif" border=0 width="97" height="30"></a></TD>
-											</TR>
-											</TBODY>
-										</TABLE> <BR>
-										<TABLE cellSpacing=2 cellPadding=1 width="100%" align=center
-											   border=0>
-											<TBODY>
-											<TR>
-												<TD>
-
-													<div class="container">
-														<div class="panel panel-primary">
-															<div class="panel-body">
-																<div class="row">
-																	<c:forEach var="currentdish"
-																			   items="${requestScope.pageModel.list}"
-																			   varStatus="status">
-																	<div class="col-md-3">
-																		<div class="thumbnail">
-																			<img class="img-circle" src="${currentdish.imag}" alt="${currentdish.dishname}">
-																			<p style="text-align: center">${currentdish.dishname}</p>
-																			<p style="text-align: center">现价: ${currentdish.price}</p>
-																			<p style="text-align: center">${currentdish.descrp}</p>
-																			<p style="text-align: center">
-																				<a href="dishdetails.jsp?dishid=${currentdish.dishid}"><img src="images/detail_cn.gif" width="60" height="20"></a>
-																			</p>
-																		</div>
-																	</div>
-																	</c:forEach>
-																</div>
-															</div>
-														</div>
-													</div>
-										</TABLE>
-							</TABLE>
-
-							<%--下面为分页功能--%>
+							<div class="panel panel-primary">
+								<div class="panel-body">
+									<div class="row" width="936px" height="660px">
+										<c:forEach var="currentdish"
+												   items="${requestScope.pageModel.list}"
+												   varStatus="status">
+											<div class="col-lg-4">
+												<div class="thumbnail">
+													<img class="img-circle" style="padding:5px" src="${currentdish.imag}" alt="${currentdish.dishname}" width="100px" height="100px">
+													<p style="text-align: center">${currentdish.dishname}</p>
+													<p style="text-align: center">现价: ${currentdish.price}元</p>
+													<p style="text-align: center">${currentdish.descrp}</p>
+													<p style="text-align: center">
+														<a href="dishdetails.jsp?dishid=${currentdish.dishid}"><img src="images/detail_cn.gif" width="60" height="20"></a>
+													</p>
+												</div>
+											</div>
+										</c:forEach>
+									</div>
+								</div>
+							</div>
+						</TD>
+					</TR>
+					<TR>
+						<%--下面为分页功能--%>
+						<TD>
 							<table width="95%" height="30" border="0" align="center"
 								   cellpadding="0" cellspacing="0">
 								<tr>
@@ -212,13 +135,12 @@
 					</TR>
 					</TBODY>
 				</TABLE>
-
-
 			</TD>
 		</TR>
 		</TBODY>
 	</TABLE>
 </div>
+
 
 <div class="container">
 	<hr>
