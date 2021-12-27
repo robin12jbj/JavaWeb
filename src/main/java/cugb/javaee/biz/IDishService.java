@@ -18,4 +18,6 @@ public interface IDishService {
 	 * @return
 	 */
 	public int getTotalRecords();
+
+	public ArrayList findDishes();
 }

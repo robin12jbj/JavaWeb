@@ -2,6 +2,14 @@
 <%@ page import="cugb.javaee.dao.DishDAOMySQLImpl" %>
 <%@ page import="cugb.javaee.bean.Dish" %>
 <%@ page import="java.util.ArrayList" %>
+<%@ page import="cugb.javaee.biz.IDishService" %>
+<%@ page import="cugb.javaee.util.DAOFactory" %>
+<%@ page import="cugb.javaee.dao.IUsersDAO" %>
+<%@ page import="cugb.javaee.dao.UsersDAOMySQLImpl" %>
+<%@ page import="cugb.javaee.bean.Users" %>
+<%@ page import="cugb.javaee.biz.IUserService" %>
+<%@ page import="cugb.javaee.biz.UserServiceImpl" %>
+<%@ page import="cugb.javaee.biz.DishServiceImpl" %>
 <%@ page pageEncoding="UTF-8"%>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
 <HTML>
@@ -15,12 +23,10 @@
 </HEAD>
 <BODY leftMargin=0 topMargin=0 marginheight="0" marginwidth="0">
 <%
-    request.setCharacterEncoding("GBK");
-    IDishDAO dishDAOMySQL=new DishDAOMySQLImpl();
-    String sql="select *from dish where dishid=?";
-    Object[] params  = {request.getParameter("dishid")};
-    ArrayList<Dish> dishes= dishDAOMySQL.findDishesBy(sql,params);
-    Dish myDish=dishes.get(0);
+   IDishDAO iDishDAO=new DishDAOMySQLImpl();
+   System.out.println(iDishDAO.getTotalDishRecords());
+   Dish myDish=new Dish();
+
 %>
 <table cellSpacing=0 cellPadding=0 width=776 align=center border=0>
     <tr>
@@ -207,7 +213,7 @@
 
             <P align=center><IMG
                     style="BORDER-LEFT-COLOR: #000000; BORDER-BOTTOM-COLOR: #000000; WIDTH: 232px; BORDER-TOP-COLOR: #000000; POSITION: static; HEIGHT: 172px; BORDER-RIGHT-COLOR: #000000; align: center"
-                    height=294 alt="" hspace=0 src="images/500047.jpg" width=350
+                    height=294 alt="" hspace=0 src=<%=myDish.getImag()%> width=350
                     border=0></P>
             <P align=center><FONT size=3><%=myDish.getDescrp()%></FONT></P>
             <br>

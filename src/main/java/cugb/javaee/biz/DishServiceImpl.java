@@ -13,7 +13,7 @@ public class DishServiceImpl implements IDishService {
 		String sql = "select dishid Dishid,name Dishname,price Price,img Imag,"
 				+ "description Descrp from dish limit ?,?";
 		Object[] params ={(pageNo-1)*pageSize,pageSize};//返回mysql中指定行数和指定数量的菜品
-		return dishDAO.findDishesBy(sql,params);
+		return dishDAO.findDishesBy(sql,params);//此处能够成功返回菜品列表，并且属性已填充
 		
 	}
 
@@ -21,6 +21,15 @@ public class DishServiceImpl implements IDishService {
 	public int getTotalRecords() {
 		IDishDAO dishDAO = (IDishDAO) DAOFactory.newInstance("IDishDAO");
 		return dishDAO.getTotalDishRecords();
-	}	
+	}
+
+	@Override
+	public ArrayList findDishes() {
+		IDishDAO dishDAO = (IDishDAO) DAOFactory.newInstance("IDishDAO");
+		String sql = "select *from dish";
+		Object[] params ={};//返回mysql中指定行数和指定数量的菜
+		return dishDAO.findDishes();
+	}
+
 
 }

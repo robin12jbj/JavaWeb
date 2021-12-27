@@ -55,6 +55,7 @@ public class LoginCheck extends baseControl {
 			Users loginuser = new Users();
 			loginuser.setUsername(username);
 			loginuser.setPwd(password);
+			session.setAttribute("user",loginuser);
 			if (userserv.validateUser(loginuser)) {
 				int pageNo = 1;
 				pageList(request, response, pageNo);

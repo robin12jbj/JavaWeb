@@ -52,7 +52,8 @@ public class baseDAO {
 			}
 			ResultSet rs = ps.executeQuery();
 			while (rs.next()) {
-				Object obj = MappingObj(rs, clazz);
+				Object obj = MappingObj(rs, clazz);//obj得到赋予属性的类的对象
+
 				userarray.add(obj);
 			}
 			// step free
