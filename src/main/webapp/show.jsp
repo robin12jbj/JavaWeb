@@ -148,6 +148,29 @@
 											<TBODY>
 											<TR>
 												<TD>
+
+													<div class="container">
+														<div class="panel panel-primary">
+															<div class="panel-body">
+																<div class="row">
+
+																	<div class="col-md-3">
+																		<div class="thumbnail">
+																			<img class="img-circle" src="images/500008.jpg" alt="dishname">
+																			<p style="text-align: center">dishname</p>
+																			<p style="text-align: center">现价: price</p>
+																			<p style="text-align: center">desc</p>
+																			<p style="text-align: center">
+																				<a href="dishdetails.jsp?dishid=currentdish.dishid"><img src="images/detail_cn.gif" width="60" height="20"></a>
+																			</p>
+																		</div>
+																	</div>
+
+																</div>
+															</div>
+														</div>
+													</div>
+
 													<TABLE height="100%" cellSpacing=1 cellPadding=2 border=0>
 														<TBODY>
 														<c:forEach var="currentdish"
