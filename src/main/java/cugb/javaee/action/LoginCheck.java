@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import cugb.javaee.bean.Cart;
 import cugb.javaee.bean.Dish;
 import cugb.javaee.bean.PageModel;
 import cugb.javaee.biz.IDishService;
@@ -56,6 +57,11 @@ public class LoginCheck extends baseControl {
 			loginuser.setUsername(username);
 			loginuser.setPwd(password);
 			session.setAttribute("user",loginuser);
+			session.setAttribute("menus",new Cart());
+
+			Cart myCart=(Cart)(session.getAttribute("menus"));
+			myCart.getMenus().put(1,2);//将1，1放入购物车
+			System.out.println(myCart.getMenus().get(1));
 			if (userserv.validateUser(loginuser)) {
 				int pageNo = 1;
 				pageList(request, response, pageNo);

@@ -200,12 +200,14 @@
                     <td>
                         <table width="145" border="0" cellspacing="1" cellpadding="0">
                             <tr>
+                                <form action="/AddToCart" method="post">
+                                <input type="text" name="quantity" value="1">
+                                <input type="hidden" name="dishid" value=<%=myDish.getDishid()%>
+                                <td align="center" width="70">
+                                    <input type="submit"  style="background-image:url('/images/buy_cn.gif')">
 
-                                <input type="text" name="quantity">
-                                <td align="center" width="70"><a href=#
-                                                                 onClick="window.open('shop_cart.asp?id=500047&nowmenuid=500001','shopcart','width=580,height=250,resizable=no,scrollbars=yes')">
-                                    <img
-                                            src="images/buy_cn.gif" border=0 width="60" height="20"></a></td>
+                                </td>
+                                </form>
                             </tr>
                         </table>
                     </td>
