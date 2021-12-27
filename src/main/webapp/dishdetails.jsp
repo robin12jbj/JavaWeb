@@ -200,6 +200,8 @@
                     <td>
                         <table width="145" border="0" cellspacing="1" cellpadding="0">
                             <tr>
+
+                                <input type="text" name="quantity">
                                 <td align="center" width="70"><a href=#
                                                                  onClick="window.open('shop_cart.asp?id=500047&nowmenuid=500001','shopcart','width=580,height=250,resizable=no,scrollbars=yes')">
                                     <img
