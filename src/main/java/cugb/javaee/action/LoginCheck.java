@@ -67,6 +67,7 @@ public class LoginCheck extends baseControl {
 			}
 		} else if (action.equals("pagelist")) {//分页显示
 			HttpSession session = request.getSession();
+			IUserService userserv = (IUserService) DAOFactory.newInstance("IUserService");
 				int pageNo = Integer.parseInt(request.getParameter("pageNo"));
 				//获取页数信息
 				pageList(request, response, pageNo);

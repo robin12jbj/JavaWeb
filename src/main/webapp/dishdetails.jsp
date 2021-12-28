@@ -186,7 +186,7 @@
                     <td>
                         <table width="145" border="0" cellspacing="1" cellpadding="0">
                             <tr>
-                                <form action="AddToCart.jsp" method="get" name="addtocart">
+                                <form action="AddToCart" method="get" name="addtocart">
                                 <input type="text" name="quantity" value="1">
                                 <input type="hidden" name="dishid" value=<%=myDish.getDishid()%>
                                     <td align="center" width="70">
