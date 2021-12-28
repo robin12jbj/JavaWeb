@@ -97,7 +97,7 @@
 					</TR>
 					<TR>
 						<%--下面为分页功能--%>
-                        <TD>
+                        <TD align="center">
                         <nav class="center-block" aria-label="Page navigation">
                             <ul class="pagination">
                                 <li>
