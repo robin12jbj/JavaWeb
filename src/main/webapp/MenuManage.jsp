@@ -19,6 +19,8 @@
     <link rel="stylesheet" href="plugins/icheck-bootstrap/icheck-bootstrap.min.css">
     <!-- Theme style -->
     <link rel="stylesheet" href="dist/css/adminlte.min.css">
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
 </head>
 <body>
 <%
@@ -154,8 +156,9 @@
                                                     <td><%=dishes.get(i).getDishname()%></td>
                                                     <td><%=dishes.get(i).getDescrp()%></td>
                                                     <td><%=dishes.get(i).getPrice()%></td>
-                                                    <td><img src="<%=dishes.get(i).getImag()%>"></td>
-                                                    <td class="sorting-1"><input type="button" value="编辑" >
+                                                    <td><img src="<%=dishes.get(i).getImag()%>" width="200px" height="150px"></td>
+                                                    <td class="sorting-1">
+                                                        <input type="button" class="btn btn-success" data-toggle="modal" data-target="#myModal" value="编辑">
                                                         <input type="button" value="删除">
                                                     </td>
                                                 </tr>
@@ -219,6 +222,50 @@
     </div>
 </div>
 
+<div class="modal fade" id="myModal" tabindex="-1" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                    &times;
+                </button>
+                <h4 class="modal-title" id="myModalLabel">
+                    菜品编辑
+                </h4>
+            </div>
+            <form name="editForm">
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label for="dishid">菜品编号</label>
+                        <input type="text" id="dishid" class="form-control" placeholder="菜品编号" >
+                    </div>
+                    <div class="form-group">
+                        <label for="dishname">菜品名称</label>
+                        <input type="text" id="dishname" class="form-control" placeholder="菜品名称" >
+                    </div>
+                    <div class="form-group">
+                        <label for="dishdescrp">菜品描述</label>
+                        <input type="text" id="dishdescrp" class="form-control" placeholder="菜品描述" >
+                    </div>
+                    <div class="form-group">
+                        <label for="dishprice">菜品价格</label>
+                        <input type="text" id="dishprice" class="form-control" placeholder="菜品价格" >
+                    </div>
+                    <div class="form-group">
+                        <label for="dishimag">菜品图片</label>
+                        <input type="text" id="dishimag" class="form-control" placeholder="菜品图片" >
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                    <input type="submit" class="btn btn-primary">提交更改</input>
+                </div>
+            </form>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal -->
+</div>
 <footer class="main-footer">
     <strong>Copyright &copy; 2021 JavaWeb</strong>
 </footer>
@@ -228,5 +275,6 @@
 <script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
 <!-- AdminLTE App -->
 <script src="dist/js/adminlte.min.js"></script>
-
+<!-- 加载 Bootstrap 的所有 JavaScript 插件。你也可以根据需要只加载单个插件。 -->
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd" crossorigin="anonymous"></script>
 </body><div id="edge-translate-notifier-container" class="edge-translate-notifier-center"></div></html>
