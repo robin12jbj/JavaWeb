@@ -110,9 +110,9 @@
                                        href="logincheck?action=pagelist&pageNo=${requestScope.pageModel.prev}"
                                        title="上页" aria-label="Previous"><span aria-hidden="true">&laquo;</span></a>
                                 </li>
-								<li <c:if test="${requestScope.pageModel.pageNo == 1}"> class="active" </c:if> ><span>1</span></li>
-                                <li <c:if test="${requestScope.pageModel.pageNo == 2}"> class="active" </c:if> ><sapn>2</sapn></li>
-                                <li <c:if test="${requestScope.pageModel.pageNo == 3}"> class="active" </c:if> ><sapn>3</sapn></li>
+								<li <c:if test="${requestScope.pageModel.pageNo == 1}"> class="active" </c:if> ><a>1</a></li>
+								<li <c:if test="${requestScope.pageModel.pageNo == 2}"> class="active" </c:if> ><a>2</a></li>
+                                <li <c:if test="${requestScope.pageModel.pageNo == 3}"> class="active" </c:if> ><a>3</a></li>
                                 <li>
                                     <a id="btnNextPage"
                                        href="logincheck?action=pagelist&pageNo=${requestScope.pageModel.next}"
