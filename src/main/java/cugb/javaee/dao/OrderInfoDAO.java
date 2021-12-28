@@ -29,4 +29,11 @@ public class OrderInfoDAO extends baseDAO{
         return findRecords(sql);
     }
 
+    public int InsertOrder(int userid) {
+        // TODO Auto-generated method stub
+        //根据
+        //插入
+        return 0;
+    }
+
 }

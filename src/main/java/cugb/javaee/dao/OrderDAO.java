@@ -28,5 +28,10 @@ public class OrderDAO extends baseDAO{
         String sql = "select count(*) from order;";
         return findRecords(sql);
     }
-    
+
+    public int InsertOrder(int orderid) {
+        // TODO Auto-generated method stub
+        //插入order订单数据库，orderid自增长，只需插入userid
+        return 0;
+    }
 }
