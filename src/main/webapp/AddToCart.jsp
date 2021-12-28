@@ -103,17 +103,17 @@
         <%
             String totalPricestr=new DecimalFormat("0.00").format(totalPrice);
         %>
-        <tfoot>
-        <tr>
-            <td align="center">总价：<%=totalPricestr%></td>
-            <td>
+    </table>
+    <nav aria-label="...">
+        <ul class="pager">
+            <li class="previous"><p align="center">总价：<%=totalPricestr%></p></li>
+            <li class="next">
                 <form>
                     <input type="submit" class="btn btn-default" value="结算">
                 </form>
-            </td>
-        </tr>
-        </tfoot>
-    </table>
+            </li>
+        </ul>
+    </nav>
 </div>
 
 <div class="container">
