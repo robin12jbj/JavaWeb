@@ -1,13 +1,9 @@
 <%@ page import="cugb.javaee.dao.IDishDAO" %>
 <%@ page import="cugb.javaee.dao.DishDAOMySQLImpl" %>
 <%@ page import="cugb.javaee.bean.Dish" %>
-<%@ page import="java.util.ArrayList" %><%--
-  Created by IntelliJ IDEA.
-  User: 麦克华斯基
-  Date: 2021/12/28
-  Time: 16:53
-  To change this template use File | Settings | File Templates.
---%>
+<%@ page import="java.util.ArrayList" %>
+<%@ page import="cugb.javaee.biz.IDishService" %>
+<%@ page import="cugb.javaee.util.DAOFactory" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -23,8 +19,8 @@
     <th>操作</th>
 </tr>
 <%
-    IDishDAO dishDAO=new DishDAOMySQLImpl();
-    ArrayList<Dish> dishes= dishDAO.findDishes();//返回所有Dish信息
+    IDishService dishService=(IDishService) DAOFactory.newInstance("IDishService");
+    ArrayList<Dish> dishes= dishService.findDishes();
     int size=dishes.size();
     int i=0;
     while(i<size)

@@ -27,8 +27,8 @@ public class DishServiceImpl implements IDishService {
 	public ArrayList findDishes() {
 		IDishDAO dishDAO = (IDishDAO) DAOFactory.newInstance("IDishDAO");
 		String sql ="select dishid Dishid,name Dishname,price Price,img Imag,"
-				+ "description Descrp,material Dishmaterial from dish where dishid = ?";
-		Object[] params ={10};//返回mysql中指定行数和指定数量的菜
+				+ "description Descrp,material Dishmaterial from dish ";
+		Object[] params ={};//返回mysql中指定行数和指定数量的菜
 		return dishDAO.findDishesBy(sql,params);//可以获得Dish
 	}
 
