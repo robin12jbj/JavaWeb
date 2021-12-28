@@ -71,13 +71,14 @@
 </header>
 
 <div class="container" style="padding-left: 15px">
-    <table class="table-hover">
+    <table class="table table-striped">
         <thead>
             <td>菜品名称</td>
             <td>菜品单价</td>
             <td>数量</td>
             <td>总价</td>
         </thead>
+        <tbody>
         <%
         while(i<dishes.length){
             myCartItem = (CartItem)cartMenus.get(dishes[i]);
@@ -91,18 +92,30 @@
             <td><%=myCartItem.getDish().getPrice()%></td>
             <td><%=myCartItem.getQuantity()%></td>
             <td><%=(price)%></td>
+            <td class="sorting-1"><input type="button" value="编辑" >
+                <input type="button" value="删除">
+            </td>
         </tr>
         <%
             i++;}
         %>
+        </tbody>
+        <%
+            String totalPricestr=new DecimalFormat("0.00").format(totalPrice);
+        %>
+        <tfoot>
+        <tr>
+            <td align="center">总价：<%=totalPricestr%></td>
+            <td>
+                <form>
+                    <input type="submit" class="btn btn-default" value="结算">
+                </form>
+            </td>
+        </tr>
+        </tfoot>
     </table>
 </div>
-<%
-    String totalPricestr=new DecimalFormat("0.00").format(totalPrice);
-%>
-<center>
-    总价：<%=totalPricestr%>
-</center>
+
 <div class="container">
     <hr>
     <footer>
