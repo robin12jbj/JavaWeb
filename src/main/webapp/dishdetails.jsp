@@ -14,82 +14,59 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
 <HTML>
 <HEAD>
-    <TITLE>我学我会网上订餐系统</TITLE>
+    <TITLE>网上订餐系统</TITLE>
     <META http-equiv=Content-Type content="text/html; charset=gb2312">
     <link rel="stylesheet" href="./css/styles.css" type="text/css" />
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
     <SCRIPT language=JavaScript type=text/JavaScript>
     </SCRIPT>
 
 </HEAD>
 <BODY leftMargin=0 topMargin=0 marginheight="0" marginwidth="0">
 <%
-
     int dishid=Integer.parseInt(request.getParameter("dishid"));
     IDishService dishService=(IDishService) DAOFactory.newInstance("IDishService");
     ArrayList<Dish> dishArrayList= dishService.findDishesBy(dishid);
     Dish myDish= (Dish) dishArrayList.get(0);
 %>
-<table cellSpacing=0 cellPadding=0 width=776 align=center border=0>
-    <tr>
-        <td width="220" rowspan="3">　</td>
-        <td width="556" height="36">　</td>
-    </tr>
-    <tr>
-        <TD
-                style="FONT-SIZE: 24pt;  WIDTH: 100%; COLOR: #000000; FONT-FAMILY: arial; POSITION: relative"
-                noWrap><B><span class="STYLE1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;XXXX</span>
-            网上订餐系统</B></TD>
-    </tr>
-    <tr>
-        <td>　</td>
-    </tr>
-</table>
-<TABLE cellSpacing=0 cellPadding=0 width=776 align=center border=0>
-    <TBODY>
-    <TR>
-        <TD background="images/001.gif" height=42>
-            <TABLE cellSpacing=0 cellPadding=0 width="100%" border=0>
-                <TBODY>
-                <TR>
-                    <TD width=0 height=20></TD>
-                    <TD align=middle ><FONT
-                            style="FONT-SIZE: 13px; COLOR: #000000">&nbsp;|&nbsp;</FONT><A
-                            href="logincheck?action=pagelist&pageNo=1" target=_self><FONT
-                            style="FONT-SIZE: 13px; COLOR: #000000">网站首页</FONT></A><FONT
-                            style="FONT-SIZE: 13px; COLOR: #000000">&nbsp;|&nbsp;</FONT>
-                        <A
-                            href="about.html" target=_self><FONT
-                            style="FONT-SIZE: 13px; COLOR: #000000">关于我们</FONT>
-                        </A><FONT
-                            style="FONT-SIZE: 13px; COLOR: #000000">&nbsp;|&nbsp;</FONT>
-                        <A
-                            href="help.html" target=_self><FONT
-                            style="FONT-SIZE: 13px; COLOR: #000000">订餐帮助</FONT></A><FONT
-                            style="FONT-SIZE: 13px; COLOR: #000000">&nbsp;|&nbsp;</FONT>
-                        <A
-                            href="shopCart.html" target=_self><FONT
-                            style="FONT-SIZE: 13px; COLOR: #000000">网上定餐</FONT>
-                        </A><FONT
-                            style="FONT-SIZE: 13px; COLOR: #000000">&nbsp;|&nbsp;</FONT>
-                        <A
-                            href="#" target=_self><FONT
-                            style="FONT-SIZE: 13px; COLOR: #000000">客服中心</FONT></A><FONT
-                            style="FONT-SIZE: 13px; COLOR: #000000">&nbsp;|&nbsp;</FONT></TD>
-                </TR>
-                </TBODY>
-            </TABLE>
-        </TD>
-    </TR>
-    </TBODY>
-</TABLE>
+<header class="container">
+    <nav class="navbar navbar-default navbar-static-top">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" style="font-size: large" href="#">网上订餐系统</a>
+            </div>
+
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                    <li><a href="login.html">网站首页</a></li>
+                    <li><a href="about.html">关于我们</a></li>
+                    <li><a href="help.html">订餐帮助</a></li>
+                </ul>
+                <ul class="nav navbar-right">
+                    <li></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>
+
+<div class="container">
 <TABLE cellSpacing=0 cellPadding=0 width=776 align=center border=0>
     <TBODY>
     <TR vAlign=top>
-        <TD width=181 background="images/002.gif">
-            <TABLE cellSpacing=0 cellPadding=0 width=181 border=0>
+        <!--左侧-->
+        <TD width=15% background="images/002.gif">
+            <TABLE cellSpacing=0 cellPadding=0 width=100% border=0>
                 <TBODY>
                 <TR>
-                    <TD><IMG height=234 src="images/left_top.jpg" width=181></TD>
+                    <TD><IMG height=234 src="images/left_top.jpg" width=100%></TD>
                 </TR>
                 </TBODY>
             </TABLE>
@@ -124,7 +101,7 @@
                 </TR>
                 <TR>
                     <TD align=middle>
-                        <TABLE cellSpacing=0 cellPadding=0 width="94%" border=0>
+                        <TABLE cellSpacing=0 cellPadding=0 width="100%" border=0>
                             <TBODY>
                             <TR>
                                 <TD>　</TD>
@@ -136,7 +113,8 @@
                 </TBODY>
             </TABLE>
         </TD>
-        <TD>
+        <!--右侧-->
+        <TD style="padding-left: 10%;padding-right: 10%;">
             <TABLE cellSpacing=0 cellPadding=0 width="100%" border=0>
                 <TBODY>
                 <TR>
@@ -147,10 +125,10 @@
             <TABLE cellSpacing=0 cellPadding=0 width="100%" border=0>
                 <TBODY>
                 <TR>
-                    <TD width="90%">
+                    <TD width="100%">
                         <div class='cnt'><marquee
-                                style="FONT-SIZE: 13px; COLOR: #0000FF" scrollamount='5'
-                                direction='left'><IMG height=15 src="images/tp009.gif" width=15> 欢迎您使用我学我会网上订餐系统，祝您用餐愉快！</marquee></div>
+                                style="FONT-SIZE: 16px; COLOR: #0000FF" scrollamount='5'
+                                direction='left'><IMG height=15 src="images/tp009.gif" width=15> 欢迎您使用网上订餐系统，祝您用餐愉快！</marquee></div>
                         &nbsp;&nbsp;</TD>
                 </TR>
                 </TBODY>
@@ -170,9 +148,12 @@
                         <TABLE cellSpacing=1 cellPadding=1 width="100%" align=center
                                bgColor=#c0c0c0 border=0>
                             <TBODY>
-                            <TR bgColor=#dadada>
-
-                                <TD width="100%" align="center">我学我会网上点餐系统用户请直接登录</TD>
+                            <TR bgcolor=#dadada>
+                                <div class="navbar navbar-default">
+                                    <div class="container-fluid">
+                                        <p class="navbar-text" style="padding-left:38%;color:gray"><strong>网上订餐用户请直接登录！</strong></p>
+                                    </div>
+                                </div>
                             </TR>
                             </TBODY>
                         </TABLE>
@@ -206,7 +187,7 @@
                     <td>
                         <table width="145" border="0" cellspacing="1" cellpadding="0">
                             <tr>
-                                <form action="AddToCart.jsp" method="get" name="addtocart">
+                                <form action="AddToCart" method="get" name="addtocart">
                                 <input type="text" name="quantity" value="1">
                                 <input type="hidden" name="dishid" value=<%=myDish.getDishid()%>
                                     <td align="center" width="70">
@@ -230,35 +211,17 @@
         </td>
     </tr>
 </table>
+</div>
 
-
-<TABLE cellSpacing=0 cellPadding=0 width=776 align=center border=0>
-    <TBODY>
-    <TR>
-        <TD background="images/005.gif" height=8></TD>
-    </TR>
-    </TBODY>
-</TABLE>
-<TABLE cellSpacing=0 cellPadding=0 width=776 align=center border=0>
-    <TBODY>
-    <TR>
-        <TD bgColor=#eeeeee>
-            <TABLE cellSpacing=0 cellPadding=0 width="100%" border=0>
-                <TBODY>
-                <TR>
-                    <TD align=middle><BR>
-                        <P align=center><FONT color=#000000>Copyright &copy;
-                            2010&nbsp;&nbsp;&nbsp;&nbsp; XXXX有限公司所有</FONT></P>
-                        <P align=center>　</P>
-                        <BR>
-                        <BR>
-                    </TD>
-                </TR>
-                </TBODY>
-            </TABLE>
-        </TD>
-    </TR>
-    </TBODY>
-</TABLE>
+<div class="container">
+    <hr>
+    <footer>
+        <p class="text-center">&copy; 2021 JavaWeb</p>
+    </footer>
+</div>
+<!-- jQuery (Bootstrap 的所有 JavaScript 插件都依赖 jQuery，所以必须放在前边) -->
+<script src="https://cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js" integrity="sha384-nvAa0+6Qg9clwYCGGPpDQLVpLNn0fRaROjHqs13t4Ggj3Ez50XnGQqc/r8MhnRDZ" crossorigin="anonymous"></script>
+<!-- 加载 Bootstrap 的所有 JavaScript 插件。你也可以根据需要只加载单个插件。 -->
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd" crossorigin="anonymous"></script>
 </BODY>
 </HTML>
