@@ -8,11 +8,10 @@
     <title>管理员主界面</title>
 </head>
 <body>
-用户管理
-菜品管理
+
 <a href="UserManage.jsp" target="detail">用户管理</a>
 <a href="MenuManage.jsp" target="detail">菜品管理</a>
-<iframe width="800" height="600" name="detail">
+<iframe width="1100" height="600" name="detail">
 </iframe>
 
 </body>

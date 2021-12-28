@@ -8,6 +8,7 @@
     <title>用户管理</title>
 </head>
 <body>
+<table>
 <tr>
     <th>用户编号</th>
     <th>用户姓名</th>
@@ -27,7 +28,8 @@
     <td><%=users.get(i).getPwd()%></td>
 </tr>
 <%
-    }
+    i++;}
 %>
+</table>
 </body>
 </html>

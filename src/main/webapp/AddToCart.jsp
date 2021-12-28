@@ -7,6 +7,8 @@
 <%@ page import="java.util.HashMap" %>
 <%@ page import="java.util.Map" %>
 <%@ page import="java.util.Set" %>
+<%@ page import="java.math.BigDecimal" %>
+<%@ page import="java.text.DecimalFormat" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -42,11 +44,11 @@
     Object[] dishes=cartitems.toArray();
     System.out.println("购物车共"+(dishes.length)+"项菜品");
     int i=0;
-    while (i<dishes.length){
-        myCartItem = (CartItem)cartMenus.get(dishes[i]);
-           response.getWriter().println(myCartItem.getDish().getDishname()+myCartItem.getQuantity()+" 份");
-        i++;
-    }
+//    while (i<dishes.length){
+//        myCartItem = (CartItem)cartMenus.get(dishes[i]);
+//           response.getWriter().println(myCartItem.getDish().getDishname()+myCartItem.getQuantity()+" 份");
+//        i++;
+//    }
 
 
 %>
@@ -77,13 +79,26 @@
 <div class="container" style="padding-left: 15px">
     <table class="table-hover">
         <thead>
-            <td></td>
-            <td></td>
-            <td></td>
+            <td>菜品名称</td>
+            <td>菜品单价</td>
+            <td>数量</td>
+            <td>总价</td>
         </thead>
+        <%
+        while(i<dishes.length){
+            myCartItem = (CartItem)cartMenus.get(dishes[i]);
+            BigDecimal num=BigDecimal.valueOf(myCartItem.getQuantity());
+            String price=new DecimalFormat("0.00").format(myCartItem.getDish().getPrice().multiply(num));
+        %>
         <tr>
-
+            <td><%=myCartItem.getDish().getDishname()%></td>
+            <td><%=myCartItem.getDish().getPrice()%></td>
+            <td><%=myCartItem.getQuantity()%></td>
+            <td><%=(price)%></td>
         </tr>
+        <%
+            i++;}
+        %>
     </table>
 </div>
 

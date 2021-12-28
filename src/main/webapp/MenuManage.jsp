@@ -10,6 +10,7 @@
     <title>菜品管理</title>
 </head>
 <body>
+<table>
 <tr>
     <th>菜品编号</th>
     <th>菜品名称</th>
@@ -37,7 +38,8 @@
     </td>
 </tr>
 <%
-    }
+    i++;}
 %>
+</table>
 </body>
 </html>
