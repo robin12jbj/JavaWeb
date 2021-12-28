@@ -98,7 +98,7 @@
 					<TR>
 						<%--下面为分页功能--%>
                         <TD>
-                        <nav aria-label="Page navigation">
+                        <nav class="center-block" aria-label="Page navigation">
                             <ul class="pagination">
                                 <li>
                                     <a id="btnTopPage"
@@ -110,9 +110,9 @@
                                        href="logincheck?action=pagelist&pageNo=${requestScope.pageModel.prev}"
                                        title="上页" aria-label="Previous"><span aria-hidden="true">&laquo;</span></a>
                                 </li>
-                                <li <c:if test="${requestScope.pageModel.pageNo == 1}"> class="active" </c:if> ><a href="#">1</a></li>
-                                <li <c:if test="${requestScope.pageModel.pageNo == 2}"> class="active" </c:if> ><a href="#">2</a></li>
-                                <li <c:if test="${requestScope.pageModel.pageNo == 3}"> class="active" </c:if> ><a href="#">3</a></li>
+								<li <c:if test="${requestScope.pageModel.pageNo == 1}"> class="active" </c:if> ><span>1</span></li>
+                                <li <c:if test="${requestScope.pageModel.pageNo == 2}"> class="active" </c:if> ><sapn>2</sapn></li>
+                                <li <c:if test="${requestScope.pageModel.pageNo == 3}"> class="active" </c:if> ><sapn>3</sapn></li>
                                 <li>
                                     <a id="btnNextPage"
                                        href="logincheck?action=pagelist&pageNo=${requestScope.pageModel.next}"
