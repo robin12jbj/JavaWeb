@@ -143,9 +143,8 @@
             <table width="100%" border="0" align="center" cellpadding="0"
                    cellspacing="0">
                 <tr align="center">
-                    <td width="120" height="120" valign="top"><img class="img-thumbnail"
-                            src=<%=myDish.getImag()%> border="0" width="110" height="110"></td>
-                    <td valign="top">
+                    <td>
+                        <img class="img-thumbnail" src=<%=myDish.getImag()%> border="0" width="150" height="150">
                         <div class="caption">
                             <h4><strong><%=myDish.getDishname()%></strong></h4>
                             <p>现价：<%=myDish.getPrice()%>&nbsp;元</p>
@@ -155,26 +154,36 @@
                 </tr>
                 <tr align="center">
                     <td>
-                        <form action="AddToCart" method="get" name="addtocart">
-                            <input type="text" name="quantity" value="1">
-                            <input type="hidden" name="dishid" value=<%=myDish.getDishid()%>
-                                    <td align="center" width="70">
-                            <input type="submit"  style="background-image:url('/images/buy_cn.gif')">
-                    </form>
+                        <form action="AddToCart.jsp" method="get" name="addtocart">
+                            <table>
+                                <tr>
+                                    <td>
+                                        <input type="text" name="quantity" value="1">
+                                        <input type="hidden" name="dishid" value=<%=myDish.getDishid()%>>
+                                    </td>
+                                    <td>
+                                        <input type="submit"  style="background-image:url('/images/buy_cn.gif');width: 60px;height: 20px" value="">
+                                    </td>
+                                </tr>
+                            </table>
+                        </form>
                     </td>
                 </tr>
             </table>
-
-            <div class="page-header">
-                <h3>详细信息</h3>
+            <div class="panel panel-info">
+                <div class="panel-heading">
+                    <h3 class="panel-title">详细信息</h3>
+                </div>
+                <div class="panel-body">
+                    <P align=center><IMG
+                            style="BORDER-LEFT-COLOR: #000000; BORDER-BOTTOM-COLOR: #000000; WIDTH: 200px; BORDER-TOP-COLOR: #000000; POSITION: static; HEIGHT: 172px; BORDER-RIGHT-COLOR: #000000; align: center"
+                            height=200 alt="" hspace=0 src=<%=myDish.getImag()%> width=350
+                            border=0></P>
+                    <P align=center><FONT size=3>菜品介绍：<%=myDish.getDescrp()%></FONT></P>
+                    <P align=center><FONT size=3>主要原料：<%=myDish.getDishmaterial()%></FONT></P>
+                    <br>
+                </div>
             </div>
-            <P align=center><IMG
-                    style="BORDER-LEFT-COLOR: #000000; BORDER-BOTTOM-COLOR: #000000; WIDTH: 200px; BORDER-TOP-COLOR: #000000; POSITION: static; HEIGHT: 172px; BORDER-RIGHT-COLOR: #000000; align: center"
-                    height=200 alt="" hspace=0 src=<%=myDish.getImag()%> width=350
-                    border=0></P>
-            <P align=center><FONT size=3><%=myDish.getDescrp()%></FONT></P>
-            <P align=center><FONT size=3><%=myDish.getDescrp()%></FONT></P>
-            <br>
         </td>
     </tr>
 </table>

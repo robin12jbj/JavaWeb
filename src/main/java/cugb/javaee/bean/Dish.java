@@ -6,13 +6,23 @@ public class Dish {
 	@Override
 	public String toString() {
 		return "Dish [dishid=" + dishid + ", dishname=" + dishname + ", price=" + price + ", desc=" + descrp + ", imag="
-				+ imag + "]";
+				+ imag +",dishmaterial="+dishmaterial+ "]";
 	}
 	private int dishid;	
 	private String dishname;
 	private BigDecimal price;
 	private String descrp;
 	private String imag;
+	private String dishmaterial;
+
+	public String getDishmaterial() {
+		return dishmaterial;
+	}
+
+	public void setDishmaterial(String dishmaterial) {
+		this.dishmaterial = dishmaterial;
+	}
+
 	public int getDishid() {
 		return dishid;
 	}
