@@ -43,14 +43,8 @@
     Set cartitems=cartMenus.keySet();
     Object[] dishes=cartitems.toArray();
     System.out.println("购物车共"+(dishes.length)+"项菜品");
+    double totalPrice=0;
     int i=0;
-//    while (i<dishes.length){
-//        myCartItem = (CartItem)cartMenus.get(dishes[i]);
-//           response.getWriter().println(myCartItem.getDish().getDishname()+myCartItem.getQuantity()+" 份");
-//        i++;
-//    }
-
-
 %>
 <header class="container">
     <nav class="navbar navbar-default navbar-static-top">
@@ -89,6 +83,8 @@
             myCartItem = (CartItem)cartMenus.get(dishes[i]);
             BigDecimal num=BigDecimal.valueOf(myCartItem.getQuantity());
             String price=new DecimalFormat("0.00").format(myCartItem.getDish().getPrice().multiply(num));
+            double Price=Double.parseDouble(price);
+            totalPrice+=Price;
         %>
         <tr>
             <td><%=myCartItem.getDish().getDishname()%></td>
@@ -101,7 +97,12 @@
         %>
     </table>
 </div>
-
+<%
+    String totalPricestr=new DecimalFormat("0.00").format(totalPrice);
+%>
+<center>
+    总价：<%=totalPricestr%>
+</center>
 <div class="container">
     <hr>
     <footer>
