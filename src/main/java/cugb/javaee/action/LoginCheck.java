@@ -12,14 +12,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import cugb.javaee.bean.Cart;
-import cugb.javaee.bean.Dish;
-import cugb.javaee.bean.PageModel;
+import cugb.javaee.bean.*;
 import cugb.javaee.biz.IDishService;
 import cugb.javaee.biz.IUserService;
 import cugb.javaee.util.DAOFactory;
 
-import cugb.javaee.bean.Users;
 import cugb.javaee.dao.*;
 import cugb.javaee.util.*;
 
@@ -56,21 +53,33 @@ public class LoginCheck extends baseControl {
 			Users loginuser = new Users();
 			loginuser.setUsername(username);
 			loginuser.setPwd(password);
-			session.setAttribute("user",loginuser);
-			session.setAttribute("menus",new Cart());
+
 			Cart myCart=(Cart)(session.getAttribute("menus"));
 			if (userserv.validateUser(loginuser)) {
 				int pageNo = 1;
+				session.setAttribute("user",loginuser);
+				session.setAttribute("menus",new Cart());
 				pageList(request, response, pageNo);
 			} else {
 				request.getRequestDispatcher("/login.html").forward(request, response);
 			}
 		} else if (action.equals("pagelist")) {//分页显示
-			HttpSession session = request.getSession();
-			IUserService userserv = (IUserService) DAOFactory.newInstance("IUserService");
 				int pageNo = Integer.parseInt(request.getParameter("pageNo"));
 				//获取页数信息
 				pageList(request, response, pageNo);
+		}else if(action.equals("admin")){//管理员登录
+			String adminname = request.getParameter("loginName");
+			String password = request.getParameter("loginPass");
+			Admin admin=new Admin();
+			admin.setAdminName(adminname);
+			admin.setPwd(password);
+			logger.debug(adminname + "," + password);
+			IAdminDAO adminDAO=(IAdminDAO) DAOFactory.newInstance("IAdminDAO");
+			if(adminDAO.findAdminBy(admin).size()>0){
+				//管理员账号存在
+				//登录管理员主界面
+				response.sendRedirect("AdminMain.jsp");
+			}
 		}
 		
 	}
