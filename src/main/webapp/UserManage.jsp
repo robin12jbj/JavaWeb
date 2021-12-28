@@ -2,6 +2,9 @@
 <%@ page import="cugb.javaee.dao.UsersDAOMySQLImpl" %>
 <%@ page import="cugb.javaee.bean.Users" %>
 <%@ page import="java.util.ArrayList" %>
+<%@ page import="cugb.javaee.biz.IUserService" %>
+<%@ page import="cugb.javaee.util.DAOFactory" %>
+<%@ page import="cugb.javaee.bean.PageModel" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -15,8 +18,28 @@
     <link rel="stylesheet" href="plugins/icheck-bootstrap/icheck-bootstrap.min.css">
     <!-- Theme style -->
     <link rel="stylesheet" href="dist/css/adminlte.min.css">
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
+    <!-- jQuery (Bootstrap 的所有 JavaScript 插件都依赖 jQuery，所以必须放在前边) -->
+    <script src="https://cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js" integrity="sha384-nvAa0+6Qg9clwYCGGPpDQLVpLNn0fRaROjHqs13t4Ggj3Ez50XnGQqc/r8MhnRDZ" crossorigin="anonymous"></script>
+    <!-- 加载 Bootstrap 的所有 JavaScript 插件。你也可以根据需要只加载单个插件。 -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd" crossorigin="anonymous"></script>
+
 </head>
 <body>
+<%
+    int pageNo=1;
+    if(request.getParameter("pageNo")!=null)
+    {
+        //传递了pageNo参数，证明管理员不是第一次进入
+        pageNo=Integer.parseInt(request.getParameter("pageNo"));
+    }
+    IUsersDAO userdao = (IUsersDAO) DAOFactory.newInstance("IUsersDAO");
+    ArrayList<Users> userlist = userdao.findUsers() ;//获得用户的数组
+    System.out.println(userlist.size());
+    int totalRecords = userlist.size();//获取总共用户数量
+    PageModel<Users> pageModel = new PageModel<Users>(totalRecords, pageNo, 6, userlist);//构造PageModel<Users>
+%>
 <div class="wrapper">
     <nav class="main-header navbar navbar-expand navbar-white navbar-light">
         <!-- Left navbar links -->
@@ -130,7 +153,7 @@
                                                         <td><%=users.get(i).getUsername()%></td>
                                                         <td><%=users.get(i).getPwd()%></td>
                                                         <td class="sorting-1">
-                                                            <input type="button" value="编辑">
+                                                            <input type="button" class="btn btn-success" name="<%=users.get(i).getUserid()%>" data-toggle="modal" data-target="#myModal" value="编辑">
                                                             <input type="button" value="删除">
                                                         </td>
                                                     </tr>
@@ -140,6 +163,47 @@
                                                 </tbody>
                                             </table>
                                         </div>
+                                    </div>
+                                    <div class="row">
+                                        <TR>
+                                            <%--下面为分页功能--%>
+                                            <TD align="center">
+                                                <nav class="center-block" aria-label="Page navigation">
+                                                    <ul class="pagination">
+                                                        <li>
+                                                            <a id="btnTopPage"
+                                                               href="UserManage.jsp?&pageNo=<%=pageModel.getTop()%>"
+                                                               title="首页">|&lt;&lt; </a>&nbsp;
+                                                        </li>
+                                                        <li>
+                                                            <a id="btnPreviousPage"
+                                                               href="UserManage.jsp?&pageNo=<%=pageModel.getPrev()%>"
+                                                               title="上页" aria-label="Previous"><span aria-hidden="true">&laquo;</span></a>
+                                                        </li>
+                                                        <%
+                                                            int j=0;
+                                                            while(j<pageModel.getTotalPages()){
+
+                                                        %>
+                                                        <li <% if(pageModel.getPageNo()==j+1){ %> class="active" <%} %> ><a><%=j+1%></a></li>
+                                                        <%
+                                                                j++;
+                                                            }
+                                                        %>
+                                                        <li>
+                                                            <a id="btnNextPage"
+                                                               href="UserManage.jsp?&pageNo=<%=pageModel.getNext()%>"
+                                                               title="下页" aria-label="Next"><span aria-hidden="true">&raquo;</span></a>
+                                                        </li>
+                                                        <li>
+                                                            <a id="btnBottomPage"
+                                                               href="UserManage.jsp?&pageNo=<%=pageModel.getBottom()%>"
+                                                               title="尾页"> &gt;&gt;|</a>
+                                                        </li>
+                                                    </ul>
+                                                </nav>
+                                            </TD>
+                                        </TR>
                                     </div>
                                 </div>
                             </div>
@@ -152,6 +216,39 @@
     </div>
 </div>
 
+<div class="modal fade" id="myModal" tabindex="-1" aria-labelledby="myModalLabel" aria-hidden="false">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="myModalLabel">
+                    用户编辑
+                </h4>
+            </div>
+            <form name="editForm">
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label for="userid">用户编号</label>
+                        <input type="text" id="userid" class="form-control" placeholder="用户编号" >
+                    </div>
+                    <div class="form-group">
+                        <label for="username">用户名称</label>
+                        <input type="text" id="username" class="form-control" placeholder="用户名称" >
+                    </div>
+                    <div class="form-group">
+                        <label for="userpassword">用户密码</label>
+                        <input type="text" id="userpassword" class="form-control" placeholder="用户密码" >
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                    <input type="submit" class="btn btn-primary">
+                </div>
+            </form>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal -->
+</div>
 
 <footer class="main-footer">
     <strong>Copyright &copy; 2021 JavaWeb</strong>

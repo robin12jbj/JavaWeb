@@ -21,6 +21,11 @@
     <link rel="stylesheet" href="dist/css/adminlte.min.css">
     <!-- Bootstrap -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
+    <!-- jQuery (Bootstrap 的所有 JavaScript 插件都依赖 jQuery，所以必须放在前边) -->
+    <script src="https://cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js" integrity="sha384-nvAa0+6Qg9clwYCGGPpDQLVpLNn0fRaROjHqs13t4Ggj3Ez50XnGQqc/r8MhnRDZ" crossorigin="anonymous"></script>
+    <!-- 加载 Bootstrap 的所有 JavaScript 插件。你也可以根据需要只加载单个插件。 -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd" crossorigin="anonymous"></script>
+
 </head>
 <body>
 <%
@@ -35,12 +40,6 @@
     System.out.println(dishlist.size());
     int totalRecords = dishserv.getTotalRecords();//获取总共菜品数量
     PageModel<Dish> pageModel = new PageModel<Dish>(totalRecords, pageNo, 6, dishlist);//构造PageModel<Dish>
-    System.out.println(pageModel.getTotalPages());
-    System.out.println(pageModel.getPrev());
-    System.out.println(pageModel.getNext());
-    System.out.println(pageModel.getTop());
-    System.out.println(pageModel.getBottom());
-
 %>
 <div class="wrapper">
     <nav class="main-header navbar navbar-expand navbar-white navbar-light">
@@ -103,7 +102,7 @@
         <!-- /.sidebar -->
     </aside>
     <!-- Content Wrapper. Contains page content -->
-    <div class="content-wrapper">
+    <div class="content-wrapper" style="min-height: 1225px">
         <!-- Content Header (Page header) -->
         <section class="content-header">
             <div class="container-fluid">
@@ -158,7 +157,7 @@
                                                     <td><%=dishes.get(i).getPrice()%></td>
                                                     <td><img src="<%=dishes.get(i).getImag()%>" width="200px" height="150px"></td>
                                                     <td class="sorting-1">
-                                                        <input type="button" class="btn btn-success" data-toggle="modal" data-target="#myModal" value="编辑">
+                                                        <input type="button" class="btn btn-success" name="<%=dishes.get(i).getDishid()%>" data-toggle="modal" data-target="#myModal" value="编辑">
                                                         <input type="button" value="删除">
                                                     </td>
                                                 </tr>
@@ -177,7 +176,6 @@
                                                     <ul class="pagination">
                                                         <li>
                                                             <a id="btnTopPage"
-
                                                                href="MenuManage.jsp?&pageNo=<%=pageModel.getTop()%>"
                                                                title="首页">|&lt;&lt; </a>&nbsp;
                                                         </li>
@@ -191,7 +189,7 @@
                                                         while(j<pageModel.getTotalPages()){
 
                                                         %>
-                                                        <li <c:if test="${requestScope.pageModel.pageNo == j+1}"> class="active" </c:if> ><a><%=j+1%></a></li>
+                                                        <li <% if(pageModel.getPageNo()==j+1){ %> class="active" <%} %> ><a><%=j+1%></a></li>
                                                         <%
                                                                 j++;
                                                             }
@@ -222,13 +220,10 @@
     </div>
 </div>
 
-<div class="modal fade" id="myModal" tabindex="-1" aria-labelledby="myModalLabel" aria-hidden="true">
+<div class="modal fade" id="myModal" tabindex="-1" aria-labelledby="myModalLabel" aria-hidden="false">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
-                    &times;
-                </button>
                 <h4 class="modal-title" id="myModalLabel">
                     菜品编辑
                 </h4>
@@ -258,7 +253,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
-                    <input type="submit" class="btn btn-primary">提交更改</input>
+                    <input type="submit" class="btn btn-primary">
                 </div>
             </form>
         </div>
@@ -275,6 +270,4 @@
 <script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
 <!-- AdminLTE App -->
 <script src="dist/js/adminlte.min.js"></script>
-<!-- 加载 Bootstrap 的所有 JavaScript 插件。你也可以根据需要只加载单个插件。 -->
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd" crossorigin="anonymous"></script>
 </body><div id="edge-translate-notifier-container" class="edge-translate-notifier-center"></div></html>

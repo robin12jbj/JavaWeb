@@ -7,7 +7,7 @@ import java.util.ArrayList;
 
 public class OrderInfoDAO extends baseDAO{
     public ArrayList findOrderInfos() {
-        String sql = "select *from orderinfo";
+        String sql = "select *from orderinfo;";
         return findObjs(sql,null, Order.class);
     }
 

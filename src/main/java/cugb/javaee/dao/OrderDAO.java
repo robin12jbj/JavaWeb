@@ -7,7 +7,7 @@ import java.util.ArrayList;
 
 public class OrderDAO extends baseDAO{
     public ArrayList findOrders() {
-        String sql = "select *from order";
+        String sql = "select orderid Orderid,userid Userid,state State from orderlist;";
         return findObjs(sql,null, Order.class);
     }
 
@@ -25,7 +25,7 @@ public class OrderDAO extends baseDAO{
 
 
     public int getTotalOrders() {
-        String sql = "select count(*) from order;";
+        String sql = "select count(*) from orderlist";
         return findRecords(sql);
     }
 
