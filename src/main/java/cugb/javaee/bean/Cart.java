@@ -4,14 +4,16 @@ import java.util.HashMap;
 import java.util.Hashtable;
 
 public class Cart {
-HashMap menus;
+ HashMap<Integer,CartItem> menus;
 
     public HashMap getMenus() {
         return menus;
     }
 
     public Cart() {
-        menus=new HashMap();//初始化
+        menus=new HashMap<Integer,CartItem>();//初始化
+        menus.clear();//清除hashmap中所有数据
+
     }
 
     public void addMenu(CartItem cartItem){

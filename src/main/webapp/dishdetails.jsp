@@ -52,20 +52,26 @@
                 <TBODY>
                 <TR>
                     <TD width=0 height=20></TD>
-                    <TD align=middle><FONT
+                    <TD align=middle ><FONT
                             style="FONT-SIZE: 13px; COLOR: #000000">&nbsp;|&nbsp;</FONT><A
-                            href="#" target=_self><FONT
+                            href="logincheck?action=pagelist&pageNo=1" target=_self><FONT
                             style="FONT-SIZE: 13px; COLOR: #000000">网站首页</FONT></A><FONT
-                            style="FONT-SIZE: 13px; COLOR: #000000">&nbsp;|&nbsp;</FONT><A
-                            href="#" target=_self><FONT
-                            style="FONT-SIZE: 13px; COLOR: #000000">关于我们</FONT></A><FONT
-                            style="FONT-SIZE: 13px; COLOR: #000000">&nbsp;|&nbsp;</FONT><A
-                            href="#" target=_self><FONT
-                            style="FONT-SIZE: 13px; COLOR: #000000">定餐帮助</FONT></A><FONT
-                            style="FONT-SIZE: 13px; COLOR: #000000">&nbsp;|&nbsp;</FONT><A
-                            href="#" target=_self><FONT
-                            style="FONT-SIZE: 13px; COLOR: #000000">网上定餐</FONT></A><FONT
-                            style="FONT-SIZE: 13px; COLOR: #000000">&nbsp;|&nbsp;</FONT><A
+                            style="FONT-SIZE: 13px; COLOR: #000000">&nbsp;|&nbsp;</FONT>
+                        <A
+                            href="about.html" target=_self><FONT
+                            style="FONT-SIZE: 13px; COLOR: #000000">关于我们</FONT>
+                        </A><FONT
+                            style="FONT-SIZE: 13px; COLOR: #000000">&nbsp;|&nbsp;</FONT>
+                        <A
+                            href="help.html" target=_self><FONT
+                            style="FONT-SIZE: 13px; COLOR: #000000">订餐帮助</FONT></A><FONT
+                            style="FONT-SIZE: 13px; COLOR: #000000">&nbsp;|&nbsp;</FONT>
+                        <A
+                            href="shopCart.html" target=_self><FONT
+                            style="FONT-SIZE: 13px; COLOR: #000000">网上定餐</FONT>
+                        </A><FONT
+                            style="FONT-SIZE: 13px; COLOR: #000000">&nbsp;|&nbsp;</FONT>
+                        <A
                             href="#" target=_self><FONT
                             style="FONT-SIZE: 13px; COLOR: #000000">客服中心</FONT></A><FONT
                             style="FONT-SIZE: 13px; COLOR: #000000">&nbsp;|&nbsp;</FONT></TD>

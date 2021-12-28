@@ -6,7 +6,6 @@
 <HEAD>
 <TITLE>网上订餐系统</TITLE>
 <META http-equiv=Content-Type content="text/html; charset=gb2312">
-<link rel="stylesheet" href="./css/styles.css" type="text/css" />
 <!-- Bootstrap -->
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
 <SCRIPT language=JavaScript type=text/JavaScript>
