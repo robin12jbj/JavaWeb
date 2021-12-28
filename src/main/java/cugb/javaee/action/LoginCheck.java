@@ -68,6 +68,7 @@ public class LoginCheck extends baseControl {
 				//获取页数信息
 				pageList(request, response, pageNo);
 		}else if(action.equals("admin")){//管理员登录
+			int pageNo = 1;
 			String adminname = request.getParameter("loginName");
 			String password = request.getParameter("loginPass");
 			Admin admin=new Admin();
@@ -78,6 +79,7 @@ public class LoginCheck extends baseControl {
 			if(adminDAO.findAdminBy(admin).size()>0){
 				//管理员账号存在
 				//登录管理员主界面
+				pageList(request, response, pageNo);
 				response.sendRedirect("AdminMain.jsp");
 			}
 		}
