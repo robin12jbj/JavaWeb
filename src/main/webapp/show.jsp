@@ -66,7 +66,7 @@
 						<TD align=right background="images/004.gif" height=19></TD>
 					</TR>
 					<TR  bgColor=#dadada>
-						<TD width="100%" style="padding-right: 10%"><a href="#"> <img
+						<TD width="100%" style="padding-right: 10%"><a href="AddToCart.jsp"> <img
 								src="images/lcart_cn.gif" border=0 width="97" height="30"></a></TD>
 					</TR>
 					<TR>

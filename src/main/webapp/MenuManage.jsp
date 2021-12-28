@@ -1,14 +1,16 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page import="cugb.javaee.dao.IDishDAO" %>
 <%@ page import="cugb.javaee.dao.DishDAOMySQLImpl" %>
 <%@ page import="cugb.javaee.bean.Dish" %>
 <%@ page import="java.util.ArrayList" %>
 <%@ page import="cugb.javaee.biz.IDishService" %>
 <%@ page import="cugb.javaee.util.DAOFactory" %>
+<%@ page import="cugb.javaee.bean.PageModel" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
     <title>菜品管理</title>
-
+<%-- 分页--%>
     <!-- Google Font: Source Sans Pro -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&amp;display=fallback">
     <!-- Font Awesome -->
@@ -19,6 +21,25 @@
     <link rel="stylesheet" href="dist/css/adminlte.min.css">
 </head>
 <body>
+<%
+    int pageNo=1;
+    if(request.getParameter("pageNo")!=null)
+    {
+        //传递了pageNo参数，证明管理员不是第一次进入
+        pageNo=Integer.parseInt(request.getParameter("pageNo"));
+    }
+    IDishService dishserv = (IDishService) DAOFactory.newInstance("IDishService");
+    ArrayList<Dish> dishlist = dishserv.findDish4PageList(pageNo, 6);//获得菜品的数组
+    System.out.println(dishlist.size());
+    int totalRecords = dishserv.getTotalRecords();//获取总共菜品数量
+    PageModel<Dish> pageModel = new PageModel<Dish>(totalRecords, pageNo, 6, dishlist);//构造PageModel<Dish>
+    System.out.println(pageModel.getTotalPages());
+    System.out.println(pageModel.getPrev());
+    System.out.println(pageModel.getNext());
+    System.out.println(pageModel.getTop());
+    System.out.println(pageModel.getBottom());
+
+%>
 <div class="wrapper">
     <nav class="main-header navbar navbar-expand navbar-white navbar-light">
         <!-- Left navbar links -->
@@ -122,10 +143,9 @@
                                                 </thead>
                                                 <tbody>
                                                 <%
-                                                    IDishService dishService=(IDishService) DAOFactory.newInstance("IDishService");
-                                                    ArrayList<Dish> dishes= dishService.findDishes();
-                                                    int size=dishes.size();
+                                                    int size=pageModel.getList().size();
                                                     int i=0;
+                                                    ArrayList<Dish> dishes=pageModel.getList();
                                                     while(i<size)
                                                     {
                                                 %>
@@ -145,6 +165,48 @@
                                                 </tbody>
                                             </table>
                                         </div>
+                                    </div>
+                                    <div class="row">
+                                        <TR>
+                                            <%--下面为分页功能--%>
+                                            <TD align="center">
+                                                <nav class="center-block" aria-label="Page navigation">
+                                                    <ul class="pagination">
+                                                        <li>
+                                                            <a id="btnTopPage"
+
+                                                               href="MenuManage.jsp?&pageNo=<%=pageModel.getTop()%>"
+                                                               title="首页">|&lt;&lt; </a>&nbsp;
+                                                        </li>
+                                                        <li>
+                                                            <a id="btnPreviousPage"
+                                                               href="MenuManage.jsp?&pageNo=<%=pageModel.getPrev()%>"
+                                                               title="上页" aria-label="Previous"><span aria-hidden="true">&laquo;</span></a>
+                                                        </li>
+                                                        <%
+                                                            int j=0;
+                                                        while(j<pageModel.getTotalPages()){
+
+                                                        %>
+                                                        <li <c:if test="${requestScope.pageModel.pageNo == j+1}"> class="active" </c:if> ><a><%=j+1%></a></li>
+                                                        <%
+                                                                j++;
+                                                            }
+                                                        %>
+                                                        <li>
+                                                            <a id="btnNextPage"
+                                                               href="MenuManage.jsp?&pageNo=<%=pageModel.getNext()%>"
+                                                               title="下页" aria-label="Next"><span aria-hidden="true">&raquo;</span></a>
+                                                        </li>
+                                                        <li>
+                                                            <a id="btnBottomPage"
+                                                               href="MenuManage.jsp?&pageNo=<%=pageModel.getBottom()%>"
+                                                               title="尾页"> &gt;&gt;|</a>
+                                                        </li>
+                                                    </ul>
+                                                </nav>
+                                            </TD>
+                                        </TR>
                                     </div>
                                 </div>
                             </div>

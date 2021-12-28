@@ -2,6 +2,11 @@
 <%@ page import="cugb.javaee.dao.DishDAOMySQLImpl" %>
 <%@ page import="java.util.ArrayList" %>
 <%@ page import="cugb.javaee.bean.Dish" %>
+<%@ page import="cugb.javaee.bean.Admin" %>
+<%@ page import="cugb.javaee.dao.IAdminDAO" %>
+<%@ page import="cugb.javaee.util.DAOFactory" %>
+<%@ page import="cugb.javaee.biz.IDishService" %>
+<%@ page import="cugb.javaee.bean.PageModel" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -15,8 +20,34 @@
     <link rel="stylesheet" href="plugins/icheck-bootstrap/icheck-bootstrap.min.css">
     <!-- Theme style -->
     <link rel="stylesheet" href="dist/css/adminlte.min.css">
+
 </head>
 <body>
+<%
+    int pageNo = 1;
+    String adminname = request.getParameter("loginName");
+    String password = request.getParameter("loginPass");
+    Admin admin = new Admin();
+    admin.setAdminName(adminname);
+    admin.setPwd(password);
+    IAdminDAO adminDAO = (IAdminDAO) DAOFactory.newInstance("IAdminDAO");
+    if (adminDAO.findAdminBy(admin).size() > 0) {
+        //管理员账号存在
+        //登录管理员主界面
+        IDishService dishserv = (IDishService) DAOFactory.newInstance("IDishService");
+        ArrayList<Dish> dishlist = dishserv.findDish4PageList(pageNo, 6);//获得菜品的数组
+        int totalRecords = dishserv.getTotalRecords();//获取总共菜品数量
+        PageModel<Dish> pageModel = new PageModel<Dish>(totalRecords, pageNo, 6, dishlist);//构造PageModel<Dish>
+        request.setAttribute("pageModel", pageModel);
+        // 跳转到show.jsp页面
+
+    }
+    else{
+        RequestDispatcher rd = request.getRequestDispatcher("/AdminLogin.html");
+        rd.forward(request, response);
+    }
+%>
+
 <div class="wrapper">
     <nav class="main-header navbar navbar-expand navbar-white navbar-light">
         <!-- Left navbar links -->
