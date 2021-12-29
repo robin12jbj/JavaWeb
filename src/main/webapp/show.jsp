@@ -36,7 +36,6 @@
 		</div>
 	</nav>
 </header>
-<a href="UserOrderList.jsp">我的订单</a>
 <div class="container" style="padding-left: 15px">
 	<TABLE  cellSpacing=0 cellPadding=0 width=100% border=0>
 		<TBODY>
@@ -66,8 +65,10 @@
 						<TD align=right background="images/004.gif" height=19></TD>
 					</TR>
 					<TR  bgColor=#dadada>
-						<TD width="100%" style="padding-right: 10%"><a href="AddToCart.jsp"> <img
-								src="images/lcart_cn.gif" border=0 width="97" height="30"></a></TD>
+						<TD width="100%">
+							<a href="AddToCart.jsp"> <img src="images/lcart_cn.gif" border=0 width="97" height="30"></a>
+							<a class="btn btn-info right" style="margin-left: 724px"  href="UserOrderList.jsp">我的订单</a>
+						</TD>
 					</TR>
 					<TR>
 						<%--下面为菜品展示功能--%>

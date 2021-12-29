@@ -50,6 +50,9 @@
 </header>
 
 <div class="container" style="padding-left: 15px">
+    <div class="page-header">
+        <h2>订单</h2>
+    </div>
     <table class="table table-striped">
         <thead>
         <td>订单编号</td>
@@ -80,6 +83,7 @@
     </table>
 
 </div>
+
 <TABLE cellSpacing=0 cellPadding=0 width="100%" border=0>
     <TBODY>
     <TR>

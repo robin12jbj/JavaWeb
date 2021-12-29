@@ -9,16 +9,9 @@ import java.util.ArrayList;
 
 public class OrderInfoDAO extends baseDAO{
     public ArrayList findOrderInfos() {
-        String sql = "select id,orderid,dishname,quanity,dishid,price from orderinfo";
+        String sql="select id,orderid,dishname,quanity,dishid,price from orderinfo";
         return findObjs(sql,null, OrderInfo.class);
     }
-
-
-    public int updateOrder(int orderid) {
-
-        return 0;
-    }
-
 
     public ArrayList<OrderInfo> findOrderInfo(String sql, Object[] params) {
         return findObjs(sql, params,Order.class);
@@ -26,6 +19,7 @@ public class OrderInfoDAO extends baseDAO{
 
 
     public int getTotalOrderInfos() {
+        //成功
         String sql = "select count(*) from orderinfo";
         return findRecords(sql);
     }

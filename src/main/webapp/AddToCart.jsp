@@ -108,6 +108,9 @@
 </header>
 
 <div class="container" style="padding-left: 15px">
+    <div class="page-header">
+        <h2>购物车</h2>
+    </div>
     <table class="table table-striped">
         <thead>
             <td>菜品名称</td>
@@ -133,9 +136,10 @@
             <td><%=myCartItem.getQuantity()%></td>
             <td><%=(price)%></td>
             <td class="sorting-1">
-                <nav class="center-block"><input type="button" style="text-align: center" class="btn btn-info" data-toggle="modal" data-target="#myModal" value="编辑"
-                 onclick="Value('<%=myCartItem.getDish().getDishname()%>','<%=myCartItem.getQuantity()%>','<%=price%>','<%=myCartItem.getDish().getDishid()%>')"></nav>
-                <a href="ModifyCart?dishid=<%=myCartItem.getDish().getDishid()%>"><input type="button" value="删除" onclick="alert('删除成功!')"></a>
+                <nav class="center-block">
+                    <input type="button" style="text-align: center" class="btn btn-info" data-toggle="modal" data-target="#myModal" value="编辑" onclick="Value('<%=myCartItem.getDish().getDishname()%>','<%=myCartItem.getQuantity()%>','<%=price%>','<%=myCartItem.getDish().getDishid()%>')">
+                    <a href="ModifyCart?dishid=<%=myCartItem.getDish().getDishid()%>"><input class="btn btn-danger" type="button" value="删除" onclick="alert('删除成功!')"></a>
+                </nav>
             </td>
         </tr>
         <%
@@ -152,7 +156,7 @@
             <li class="next">
                 <form action="successpay.jsp">
 
-                    <input type="submit" class="btn btn-default" value="结算" onclick="alert('支付成功')">
+                    <input class="btn btn-success" type="submit" class="btn btn-default" value="结算" onclick="alert('支付成功')">
                 </form>
             </li>
         </ul>

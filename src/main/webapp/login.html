@@ -23,7 +23,6 @@
 
 </HEAD>
 <BODY>
-<a href="UserRegister.html">用户注册</a>
 <header class="container">
 	<nav class="navbar navbar-default navbar-static-top">
 		<div class="container-fluid">
@@ -187,16 +186,20 @@
 							</TR>
 							<TR>
 								<TD>
-										<input type="button" onclick="window.location.href='AdminLogin.html'" value="管理员登录">
-
+									<input class="btn btn-file btn-block center-block" style="width: 40%;margin-bottom:10px;" type="button" onclick="window.location.href='AdminLogin.html'" value="管理员登录">
 								</TD>
 							</TR>
 							<TR>
 								<TD>
-									<input class="btn btn-primary btn-block center-block" style="width: 50%;" type="submit" name="Submit" value="登录">
+									<input class="btn btn-primary btn-block center-block" style="width: 40%;margin-bottom:10px;" type="submit" name="Submit" value="登录">
 								</TD>
 								<TD>
 									<input type="hidden" name=action value="loginctrl">　
+								</TD>
+							</TR>
+							<TR>
+								<TD>
+									<a class="btn btn-success btn-block center-block" style="width: 40%;margin-bottom:10px;" type="button" href="UserRegister.html">用户注册</a>
 								</TD>
 							</TR>
 						</TABLE>
