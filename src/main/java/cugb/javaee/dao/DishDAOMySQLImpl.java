@@ -25,6 +25,14 @@ public class DishDAOMySQLImpl extends baseDAO implements IDishDAO {
 	}
 
 	@Override
+	public int updateDish(int dishid, String dishname, String dishdescrp, double dishprice, String dishimag,String material) {
+		String sql="update dish set name=?,price=?,description=?,img=?,material=? where dishid=?";
+		Object[] params={dishname,dishprice,dishdescrp,dishimag,material,dishid};
+		return updateObj(sql,params);
+
+	}
+
+	@Override
 	public ArrayList<Dish> findDishesBy(String sql, Object[] params) {
 			return findObjs(sql, params,Dish.class);
 	}
@@ -34,5 +42,19 @@ public class DishDAOMySQLImpl extends baseDAO implements IDishDAO {
 		String sql = "select count(*) from dish;";
 		return findRecords(sql);
 	}
+
+	@Override
+	public int deleteDish(int dishid) {
+		String sql="delete from dish where dishid = ?";
+		Object[] params = {dishid};
+		return updateObj(sql,params);
+	}
+
+    @Override
+    public int insertDish(int dishid,String dishname,Double dishprice,String dishdescrp,String dishimag,String material) {
+		String	sql="insert into dish values(?,?,?,?,?,?)";
+		Object[] params={dishid,dishname,dishprice,dishdescrp,dishimag,material};
+        return updateObj(sql,params);
+    }
 
 }

@@ -2,6 +2,9 @@
 <%@ page import="cugb.javaee.bean.Order" %>
 <%@ page import="java.util.ArrayList" %>
 <%@ page import="cugb.javaee.bean.PageModel" %>
+<%@ page import="cugb.javaee.bean.Dish" %>
+<%@ page import="cugb.javaee.biz.IDishService" %>
+<%@ page import="cugb.javaee.biz.DishServiceImpl" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -32,7 +35,12 @@
         pageNo=Integer.parseInt(request.getParameter("pageNo"));
     }
     OrderDAO orderDAO=new OrderDAO();
-    ArrayList<Order> orderlist =orderDAO.findOrders();//获得订单的数组
+    ArrayList<Order> orderlist = orderDAO.findOrders();
+    int c=0;while(c<orderlist.size()){
+        System.out.println(orderlist.get(c).getOrderid());
+        c++;
+    }
+    System.out.println(orderlist.size());
     int totalRecords = orderlist.size();//获取总共订单数量
     PageModel<Order> pageModel = new PageModel<Order>(totalRecords, pageNo, 6,orderlist);//构造PageModel<Order>
 
@@ -138,19 +146,19 @@
                                                 </thead>
                                                 <tbody>
                                                 <%
-                                                    OrderDAO ordersDAO=new OrderDAO();
-                                                    ArrayList<Order> orders= ordersDAO.findOrders();//返回所有Order信息
-                                                    int size=orders.size();
+
+                                                    int size=pageModel.getList().size();
                                                     int i=0;
                                                     while(i<size)
                                                     {
+                                                        Order orders=pageModel.getList().get(i);
                                                 %>
                                                 <tr class="odd">
-                                                    <td><%=orders.get(i).getOrderid()%></td>
-                                                    <td><%=orders.get(i).getUserid()%></td>
-                                                    <td><%=orders.get(i).getState()%></td>
+                                                    <td><%=orders.getOrderid()%></td>
+                                                    <td><%=orders.getUserid()%></td>
+                                                    <td><%=orders.getState()%></td>
                                                     <td class="sorting-1">
-                                                        <input type="button" class="btn btn-success" name="<%=orders.get(i).getOrderid()%>" value="发货">
+                                                        <a href="OrderControl?orderid=<%=orders.getOrderid()%>"><input type="button" class="btn btn-success" name="<%=orders.getOrderid()%>"  value="发货" ></a>
                                                     </td>
                                                 </tr>
                                                 <%

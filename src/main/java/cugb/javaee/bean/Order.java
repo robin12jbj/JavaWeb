@@ -3,7 +3,7 @@ package cugb.javaee.bean;
 public class Order {
     private int orderid;
     private int userid;
-
+    private String state;
     public void setUserid(int userid) {
         this.userid = userid;
     }
@@ -16,7 +16,7 @@ public class Order {
         this.orderid = orderid;
     }
 
-    private String state;
+
 
     public int getOrderid() {
         return orderid;

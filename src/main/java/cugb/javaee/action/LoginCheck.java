@@ -56,6 +56,9 @@ public class LoginCheck extends baseControl {
 
 			Cart myCart=(Cart)(session.getAttribute("menus"));
 			if (userserv.validateUser(loginuser)) {
+				UsersDAOMySQLImpl usersDAOMySQL=new UsersDAOMySQLImpl();
+				loginuser=usersDAOMySQL.findUsersBy(loginuser).get(0);
+				//获取到含有userid的loginuser
 				int pageNo = 1;
 				session.setAttribute("user",loginuser);
 				session.setAttribute("menus",new Cart());

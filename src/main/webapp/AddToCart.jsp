@@ -10,6 +10,7 @@
 <%@ page import="java.math.BigDecimal" %>
 <%@ page import="java.text.DecimalFormat" %>
 <%@ page import="java.io.PrintWriter" %>
+<%@ page import="cugb.javaee.bean.PageModel" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -17,7 +18,9 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
 </head>
 <body>
+<%--购物车页面--%>
 <%
+    int pageNo=1;
     if (request.getParameter("dishid")!=null){
         int dishid=Integer.parseInt(request.getParameter("dishid"));
         int quanity=Integer.parseInt(request.getParameter("quantity"));
@@ -42,21 +45,34 @@
             System.out.println("购物车里之前已经有该菜品 "+myDish.getDishname()+" 编号 "+myDish.getDishid()+" "+ myCartItem.getQuantity()+"份");
         }
     }
+    if(request.getParameter("pageNo")!=null){
+        pageNo=Integer.parseInt(request.getParameter("pageNo"));
+    }
+
 
     Cart myCart=(Cart)(session.getAttribute("menus"));//我的购物车
     Map cartMenus=myCart.getMenus();
     Set cartitems=cartMenus.keySet();
+    Object[] keys=cartitems.toArray();//得到hashmap的key转换过来的数组
+    ArrayList<CartItem> mycartitemlist=new ArrayList<>();
+    int j=0;
+    while (j<cartitems.size()){
+        mycartitemlist.add((CartItem) cartMenus.get(keys[j]));
+        j++;//将购物车的hashmap中的value添加到arraylist中
+    }
     Object[] dishes=cartitems.toArray();
 
+    PageModel<CartItem> pageModel=new PageModel<>(mycartitemlist.size(),1,6,mycartitemlist);//将list添加入pageModel中
     if(dishes.length==0){
         PrintWriter tip=response.getWriter();
         tip.println("<script language=javascript>alert('购物车为空！');window.location.href='logincheck?action=pagelist&pageNo=1'</script>");
-
     }
     CartItem myCartItem=(CartItem)(myCart.getMenus().get(dishes[0]));
     System.out.println("购物车共"+(dishes.length)+"项菜品");
+    CartItem cartItem=pageModel.getList().get(0);
+    System.out.println(cartItem.getDish().getDishname());
     double totalPrice=0;
-    int i=0;
+
 %>
 <header class="container">
     <nav class="navbar navbar-default navbar-static-top">
@@ -73,7 +89,7 @@
 
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
-                    <li><a href="login.html">网站首页</a></li>
+                    <li><a href="logincheck?action=pagelist&pageNo=1">网站首页</a></li>
                     <li><a href="about.html">关于我们</a></li>
                     <li><a href="help.html">订餐帮助</a></li>
                 </ul>
@@ -92,9 +108,11 @@
         </thead>
         <tbody>
         <%
-
-        while(i<dishes.length){
-            myCartItem = (CartItem)cartMenus.get(dishes[i]);
+            System.out.println("购物车共有"+pageModel.getList().size()+"项");
+            int i=0;
+        while(i<pageModel.getTotalRecords()){
+            myCartItem = pageModel.getList().get(i);
+            System.out.println("该菜品数量为："+myCartItem.getQuantity());
             BigDecimal num=BigDecimal.valueOf(myCartItem.getQuantity());
             String price=new DecimalFormat("0.00").format(myCartItem.getDish().getPrice().multiply(num));
             double Price=Double.parseDouble(price);
@@ -121,14 +139,13 @@
         <ul class="pager">
             <li class="previous"><p align="center">总价：<%=totalPricestr%></p></li>
             <li class="next">
-                <form>
+                <form action="successpay.jsp">
                     <input type="submit" class="btn btn-default" value="结算">
                 </form>
             </li>
         </ul>
     </nav>
 </div>
-
 <div class="container">
     <hr>
     <footer>

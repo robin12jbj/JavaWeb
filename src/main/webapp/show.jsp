@@ -36,7 +36,7 @@
 		</div>
 	</nav>
 </header>
-
+<a href="UserOrderList.jsp">我的订单</a>
 <div class="container" style="padding-left: 15px">
 	<TABLE  cellSpacing=0 cellPadding=0 width=100% border=0>
 		<TBODY>
@@ -97,35 +97,35 @@
 					</TR>
 					<TR>
 						<%--下面为分页功能--%>
-                        <TD align="center">
-                        <nav class="center-block" aria-label="Page navigation">
-                            <ul class="pagination">
-                                <li>
-                                    <a id="btnTopPage"
-                                       href="logincheck?action=pagelist&pageNo=${requestScope.pageModel.top}"
-                                       title="首页">|&lt;&lt; </a>&nbsp;
-                                </li>
-                                <li>
-                                    <a id="btnPreviousPage"
-                                       href="logincheck?action=pagelist&pageNo=${requestScope.pageModel.prev}"
-                                       title="上页" aria-label="Previous"><span aria-hidden="true">&laquo;</span></a>
-                                </li>
-								<li <c:if test="${requestScope.pageModel.pageNo == 1}"> class="active" </c:if> ><a>1</a></li>
-								<li <c:if test="${requestScope.pageModel.pageNo == 2}"> class="active" </c:if> ><a>2</a></li>
-                                <li <c:if test="${requestScope.pageModel.pageNo == 3}"> class="active" </c:if> ><a>3</a></li>
-                                <li>
-                                    <a id="btnNextPage"
-                                       href="logincheck?action=pagelist&pageNo=${requestScope.pageModel.next}"
-                                       title="下页" aria-label="Next"><span aria-hidden="true">&raquo;</span></a>
-                                </li>
-                                <li>
-                                    <a id="btnBottomPage"
-                                       href="logincheck?action=pagelist&pageNo=${requestScope.pageModel.bottom}"
-                                       title="尾页"> &gt;&gt;|</a>
-                                </li>
-                            </ul>
-                        </nav>
-                        </TD>
+						<TD align="center">
+							<nav class="center-block" aria-label="Page navigation">
+								<ul class="pagination">
+									<li>
+										<a id="btnTopPage"
+										   href="logincheck?action=pagelist&pageNo=${requestScope.pageModel.top}"
+										   title="首页">|&lt;&lt; </a>&nbsp;
+									</li>
+									<li>
+										<a id="btnPreviousPage"
+										   href="logincheck?action=pagelist&pageNo=${requestScope.pageModel.prev}"
+										   title="上页" aria-label="Previous"><span aria-hidden="true">&laquo;</span></a>
+									</li>
+									<li <c:if test="${requestScope.pageModel.pageNo == 1}"> class="active" </c:if> ><a>1</a></li>
+									<li <c:if test="${requestScope.pageModel.pageNo == 2}"> class="active" </c:if> ><a>2</a></li>
+									<li <c:if test="${requestScope.pageModel.pageNo == 3}"> class="active" </c:if> ><a>3</a></li>
+									<li>
+										<a id="btnNextPage"
+										   href="logincheck?action=pagelist&pageNo=${requestScope.pageModel.next}"
+										   title="下页" aria-label="Next"><span aria-hidden="true">&raquo;</span></a>
+									</li>
+									<li>
+										<a id="btnBottomPage"
+										   href="logincheck?action=pagelist&pageNo=${requestScope.pageModel.bottom}"
+										   title="尾页"> &gt;&gt;|</a>
+									</li>
+								</ul>
+							</nav>
+						</TD>
 					</TR>
 					</TBODY>
 				</TABLE>

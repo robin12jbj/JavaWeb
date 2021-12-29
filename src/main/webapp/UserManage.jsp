@@ -5,6 +5,8 @@
 <%@ page import="cugb.javaee.biz.IUserService" %>
 <%@ page import="cugb.javaee.util.DAOFactory" %>
 <%@ page import="cugb.javaee.bean.PageModel" %>
+<%@ page import="cugb.javaee.bean.Dish" %>
+<%@ page import="cugb.javaee.biz.IDishService" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -24,7 +26,15 @@
     <script src="https://cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js" integrity="sha384-nvAa0+6Qg9clwYCGGPpDQLVpLNn0fRaROjHqs13t4Ggj3Ez50XnGQqc/r8MhnRDZ" crossorigin="anonymous"></script>
     <!-- 加载 Bootstrap 的所有 JavaScript 插件。你也可以根据需要只加载单个插件。 -->
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd" crossorigin="anonymous"></script>
-
+    <script>
+        function Value(userid,username,userpassword) {
+            $("#userid").val(userid);
+            $("#username").val(username);
+            $("#userpassword").val(userpassword);
+            $("#action").val('modify');
+        //本地js代码实现将数据传递到模态框中
+        }
+    </script>
 </head>
 <body>
 <%
@@ -34,8 +44,9 @@
         //传递了pageNo参数，证明管理员不是第一次进入
         pageNo=Integer.parseInt(request.getParameter("pageNo"));
     }
+
     IUsersDAO userdao = (IUsersDAO) DAOFactory.newInstance("IUsersDAO");
-    ArrayList<Users> userlist = userdao.findUsers() ;//获得用户的数组
+    ArrayList<Users> userlist = userdao.findUsers();
     System.out.println(userlist.size());
     int totalRecords = userlist.size();//获取总共用户数量
     PageModel<Users> pageModel = new PageModel<Users>(totalRecords, pageNo, 6, userlist);//构造PageModel<Users>
@@ -142,7 +153,7 @@
                                                 <tbody>
                                                     <%
                                                         IUsersDAO usersDAO=new UsersDAOMySQLImpl();
-                                                        ArrayList<Users> users= usersDAO.findUsers();//返回所有Dish信息
+                                                        ArrayList<Users> users= usersDAO.findUsers();//返回所有users信息
                                                         int size=users.size();
                                                         int i=0;
                                                         while(i<size)
@@ -153,8 +164,9 @@
                                                         <td><%=users.get(i).getUsername()%></td>
                                                         <td><%=users.get(i).getPwd()%></td>
                                                         <td class="sorting-1">
-                                                            <input type="button" class="btn btn-success" name="<%=users.get(i).getUserid()%>" data-toggle="modal" data-target="#myModal" value="编辑">
-                                                            <input type="button" value="删除">
+                                                            <input type="button" class="btn btn-success" name="<%=users.get(i).getUserid()%>" data-toggle="modal" data-target="#myModal" value="编辑"
+                                                                   onclick="Value('<%=users.get(i).getUserid()%>','<%=users.get(i).getUsername()%>','<%=users.get(i).getPwd()%>')">
+                                                            <a href="UserControl?action=delete&userid=<%=users.get(i).getUserid()%>"> <input type="button" value="删除"></a>
                                                         </td>
                                                     </tr>
                                                     <%
@@ -224,24 +236,26 @@
                     用户编辑
                 </h4>
             </div>
-            <form name="editForm">
+            <form action="UserControl" method="get">
                 <div class="modal-body">
                     <div class="form-group">
                         <label for="userid">用户编号</label>
-                        <input type="text" id="userid" class="form-control" placeholder="用户编号" >
+                        <input type="text" id="userid" name="userid" class="form-control" placeholder="用户编号" >
                     </div>
                     <div class="form-group">
                         <label for="username">用户名称</label>
-                        <input type="text" id="username" class="form-control" placeholder="用户名称" >
+                        <input type="text" id="username" name="username" class="form-control" placeholder="用户名称" >
                     </div>
                     <div class="form-group">
                         <label for="userpassword">用户密码</label>
-                        <input type="text" id="userpassword" class="form-control" placeholder="用户密码" >
+                        <input type="text" id="userpassword" name="userpassword" class="form-control" placeholder="用户密码" >
                     </div>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
-                    <input type="submit" class="btn btn-primary">
+                    <input type="hidden" name="action" id="action" value="modify">
+<%--                    默认为修改功能--%>
+                    <input type="submit" class="btn btn-primary" >
                 </div>
             </form>
         </div>

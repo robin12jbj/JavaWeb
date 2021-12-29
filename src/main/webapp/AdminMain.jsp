@@ -43,8 +43,9 @@
 
     }
     else{
-        RequestDispatcher rd = request.getRequestDispatcher("/AdminLogin.html");
-        rd.forward(request, response);
+//        RequestDispatcher rd = request.getRequestDispatcher("/AdminLogin.html");
+//        rd.forward(request, response);
+        response.sendRedirect("/AdminLogin.html");
     }
 %>
 

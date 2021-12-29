@@ -1,8 +1,11 @@
 package cugb.javaee.biz;
 
 import cugb.javaee.bean.Users;
+import cugb.javaee.dao.IDishDAO;
 import cugb.javaee.dao.IUsersDAO;
 import cugb.javaee.util.DAOFactory;
+
+import java.util.ArrayList;
 
 public class UserServiceImpl implements IUserService {
 
@@ -16,4 +19,5 @@ public class UserServiceImpl implements IUserService {
 			return false;
 		}
 	}
+
 }

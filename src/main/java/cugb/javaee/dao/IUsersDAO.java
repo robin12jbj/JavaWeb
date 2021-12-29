@@ -1,6 +1,5 @@
 package cugb.javaee.dao;
 
-import java.sql.Timestamp;
 import java.util.ArrayList;
 
 import cugb.javaee.bean.Users;
@@ -27,11 +26,21 @@ public interface IUsersDAO {
 	 */
 	int updateUser(int userid, String pwd);
 
+	int updateUser(int userid, String pwd,String username);
 	/***
 	 * insertUser
-	 * @param dt
+	 *
+	 * @param userid
+	 * @param username
+	 * @param userpassword
 	 * @return
 	 */
-	int insertUser(Timestamp dt);
+	int insertUser(int userid,String username,String userpassword);
+
+	public int deleteUser(int userid);
+
+	public ArrayList findUsersPageList(int pageNo,int pageSize);
+
+	public ArrayList findUsersBy(String sql,Object[] params);
 
 }

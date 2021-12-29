@@ -25,7 +25,22 @@
     <script src="https://cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js" integrity="sha384-nvAa0+6Qg9clwYCGGPpDQLVpLNn0fRaROjHqs13t4Ggj3Ez50XnGQqc/r8MhnRDZ" crossorigin="anonymous"></script>
     <!-- 加载 Bootstrap 的所有 JavaScript 插件。你也可以根据需要只加载单个插件。 -->
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd" crossorigin="anonymous"></script>
+    <script>
+        function Value(dishid,dishname,dishdescrp,dishprice,dishimag,material) {
+            $("#dishid").val(dishid);
+            $("#dishname").val(dishname);
+            $("#dishdescrp").val(dishdescrp);
+            $("#dishprice").val(dishprice);
+            $("#dishimag").val(dishimag);
+            $("#material").val(material);
+            $("#action").val('modify');
 
+        }
+        function DefaultValue(nextdishid){
+            $("#dishid").val(nextdishid);
+            $("#action").val('add');
+        }
+    </script>
 </head>
 <body>
 <%
@@ -102,7 +117,7 @@
         <!-- /.sidebar -->
     </aside>
     <!-- Content Wrapper. Contains page content -->
-    <div class="content-wrapper" style="min-height: 1225px">
+    <div class="content-wrapper" style="min-height: 1245px">
         <!-- Content Header (Page header) -->
         <section class="content-header">
             <div class="container-fluid">
@@ -139,6 +154,7 @@
                                                     <th class="sorting" tabindex="0" aria-controls="table" rowspan="1" colspan="1" aria-label="菜品描述">菜品描述</th>
                                                     <th class="sorting" tabindex="0" aria-controls="table" rowspan="1" colspan="1" aria-label="菜品价格">菜品价格</th>
                                                     <th class="sorting" tabindex="0" aria-controls="table" rowspan="1" colspan="1" aria-label="菜品图片">菜品图片</th>
+                                                    <th class="sorting" tabindex="0" aria-controls="table" rowspan="1" colspan="1" aria-label="菜品原料">菜品原料</th>
                                                     <th tabindex="0" aria-controls="table" rowspan="1" colspan="1" aria-label="操作">操作</th>
                                                 </tr>
                                                 </thead>
@@ -156,9 +172,11 @@
                                                     <td><%=dishes.get(i).getDescrp()%></td>
                                                     <td><%=dishes.get(i).getPrice()%></td>
                                                     <td><img src="<%=dishes.get(i).getImag()%>" width="200px" height="150px"></td>
+                                                    <td><%=dishes.get(i).getDishmaterial()%></td>
                                                     <td class="sorting-1">
-                                                        <input type="button" class="btn btn-success" name="<%=dishes.get(i).getDishid()%>" data-toggle="modal" data-target="#myModal" value="编辑">
-                                                        <input type="button" value="删除">
+                                                        <input type="button" class="btn btn-success" name="<%=dishes.get(i).getDishid()%>" data-toggle="modal" data-target="#myModal" value="编辑"
+                                                               onclick="Value('<%=dishes.get(i).getDishid()%>','<%=dishes.get(i).getDishname()%>','<%=dishes.get(i).getDescrp()%>','<%=dishes.get(i).getPrice()%>','<%=dishes.get(i).getImag()%>','<%=dishes.get(i).getDishmaterial()%>')">
+                                                        <a href="DishControl?action=delete&dishid=<%=dishes.get(i).getDishid()%>"><input type="button" value="删除"></a>
                                                     </td>
                                                 </tr>
                                                 <%
@@ -167,6 +185,13 @@
                                                 </tbody>
                                             </table>
                                         </div>
+                                    </div>
+                                    <div class="row">
+                                        <%
+                                        IDishDAO dishDAO=new DishDAOMySQLImpl();
+                                            int nextdishid=dishDAO.findDishes().size()+1;
+                                        %>
+                                        <nav class="center-block"><input type="button" style="text-align: center" class="btn btn-info" data-toggle="modal" data-target="#myModal" value="添加" onclick="DefaultValue('<%=nextdishid%>')"></nav>
                                     </div>
                                     <div class="row">
                                         <TR>
@@ -228,32 +253,37 @@
                     菜品编辑
                 </h4>
             </div>
-            <form name="editForm">
+            <form name="editForm" action="DishControl">
                 <div class="modal-body">
                     <div class="form-group">
                         <label for="dishid">菜品编号</label>
-                        <input type="text" id="dishid" class="form-control" placeholder="菜品编号" >
+                        <input type="text" id="dishid" name="dishid" class="form-control" placeholder="菜品编号" readonly="readonly">
                     </div>
                     <div class="form-group">
                         <label for="dishname">菜品名称</label>
-                        <input type="text" id="dishname" class="form-control" placeholder="菜品名称" >
+                        <input type="text" id="dishname" name="dishname" class="form-control" placeholder="菜品名称" >
                     </div>
                     <div class="form-group">
                         <label for="dishdescrp">菜品描述</label>
-                        <input type="text" id="dishdescrp" class="form-control" placeholder="菜品描述" >
+                        <input type="text" id="dishdescrp" name="dishdescrp" class="form-control" placeholder="菜品描述" >
                     </div>
                     <div class="form-group">
                         <label for="dishprice">菜品价格</label>
-                        <input type="text" id="dishprice" class="form-control" placeholder="菜品价格" >
+                        <input type="text" id="dishprice" name="dishprice" class="form-control" placeholder="菜品价格" >
                     </div>
                     <div class="form-group">
                         <label for="dishimag">菜品图片</label>
-                        <input type="text" id="dishimag" class="form-control" placeholder="菜品图片" >
+                        <input type="text" id="dishimag" name="dishimag" class="form-control" placeholder="菜品图片" >
+                    </div>
+                    <div class="form-group">
+                        <label for="material">原料</label>
+                        <input type="text" id="material" name="material" class="form-control" placeholder="原料" >
                     </div>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
-                    <input type="submit" class="btn btn-primary">
+                    <input type="hidden" name="action" id="action" value="modify">
+                     <input type="submit" class="btn btn-primary">
                 </div>
             </form>
         </div>
