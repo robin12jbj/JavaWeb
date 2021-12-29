@@ -10,6 +10,7 @@
 </head>
 <body>
 <%--用户订单表--%>
+<%--订单编号，用户编号，订单状态--%>
 <%
     int pageNo=1;
     if(request.getParameter("pageNo")!=null){
@@ -39,7 +40,7 @@
 
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
-                    <li><a href="login.html">网站首页</a></li>
+                    <li><a href="logincheck?action=pagelist&pageNo=1">网站首页</a></li>
                     <li><a href="about.html">关于我们</a></li>
                     <li><a href="help.html">订餐帮助</a></li>
                 </ul>
@@ -54,6 +55,7 @@
         <td>订单编号</td>
         <td>用户编号</td>
         <td>送餐状态</td>
+        <td>操作</td>
         </thead>
         <tbody>
         <%
@@ -65,7 +67,11 @@
             <td><%=orderitem.getOrderid()%></td>
             <td><%=orderitem.getUserid()%></td>
             <td><%=orderitem.getState()%></td>
-
+            <td class="sorting-1">
+                <a href="UserOrderListDetail.jsp?orderid=<%=orderitem.getOrderid()%>">
+                <input type="button" class="btn btn-success" name="<%=orderitem.getOrderid()%>" data-toggle="modal" data-target="#myModal" value="查看">
+                </a>
+            </td>
         </tr>
         <%
                 i++;}

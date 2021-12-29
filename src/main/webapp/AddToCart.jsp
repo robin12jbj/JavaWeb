@@ -16,6 +16,15 @@
 <head>
     <title>购物车</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
+    <script>
+        function Value(dishname,quanity,price,dishid) {
+            $("#dishname").val(dishname);
+            $("#quanity").val(quanity);
+            $("#price").val(price);
+            $("#dishid").val(dishid);
+
+        }
+    </script>
 </head>
 <body>
 <%--购物车页面--%>
@@ -123,8 +132,10 @@
             <td><%=myCartItem.getDish().getPrice()%></td>
             <td><%=myCartItem.getQuantity()%></td>
             <td><%=(price)%></td>
-            <td class="sorting-1"><input type="button" value="编辑" >
-                <input type="button" value="删除">
+            <td class="sorting-1">
+                <nav class="center-block"><input type="button" style="text-align: center" class="btn btn-info" data-toggle="modal" data-target="#myModal" value="编辑"
+                 onclick="Value('<%=myCartItem.getDish().getDishname()%>','<%=myCartItem.getQuantity()%>','<%=price%>','<%=myCartItem.getDish().getDishid()%>')"></nav>
+                <a href="ModifyCart?dishid=<%=myCartItem.getDish().getDishid()%>"><input type="button" value="删除" onclick="alert('删除成功!')"></a>
             </td>
         </tr>
         <%
@@ -140,11 +151,46 @@
             <li class="previous"><p align="center">总价：<%=totalPricestr%></p></li>
             <li class="next">
                 <form action="successpay.jsp">
-                    <input type="submit" class="btn btn-default" value="结算">
+
+                    <input type="submit" class="btn btn-default" value="结算" onclick="alert('支付成功')">
                 </form>
             </li>
         </ul>
     </nav>
+</div>
+<div class="modal fade" id="myModal" tabindex="-1" aria-labelledby="myModalLabel" aria-hidden="false">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="myModalLabel">
+                    订单编辑
+                </h4>
+            </div>
+            <form name="editForm" action="CartMenuControl">
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label for="dishname">菜品名称</label>
+                        <input type="text" id="dishname" name="dishname" class="form-control" placeholder="菜品名称" readonly="readonly" >
+                    </div>
+                    <div class="form-group">
+                        <label for="quanity">菜品数量</label>
+                        <input type="text" id="quanity" name="quanity" class="form-control" placeholder="菜品数量" >
+                    </div>
+                    <div class="form-group">
+                        <label for="price">菜品总价</label>
+                        <input type="text" id="price" name="price" class="form-control" placeholder="菜品总价" readonly="readonly" >
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                    <input type="hidden" name="dishid" id="dishid" placeholder="菜品编号">
+                    <input type="submit" class="btn btn-primary">
+                </div>
+            </form>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal -->
 </div>
 <div class="container">
     <hr>

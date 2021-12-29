@@ -43,9 +43,8 @@
     }
     //信息添加完毕
     session.setAttribute("menus",new Cart());//删除购物车，添加新的购物车
-    PrintWriter tip=response.getWriter();
-    tip.println("<script language=javascript>alert('支付成功!');</script>");
-    //window.location.href='logincheck?action=pagelist&pageNo=1'
+//    PrintWriter tip=response.getWriter();
+//    tip.println("<script language=javascript>alert('支付成功!');</script>");
     RequestDispatcher rd = request.getRequestDispatcher("/logincheck?action=pagelist&pageNo=1");
     rd.forward(request, response);
 
