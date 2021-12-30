@@ -104,7 +104,7 @@
                             <li class="nav-item">
                                 <a href="upload.html" class="nav-link">
                                     <p>
-                                        添加菜品
+                                        菜品添加
                                     </p>
                                 </a>
                             </li>
