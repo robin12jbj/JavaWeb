@@ -14,7 +14,7 @@ public class OrderInfoDAO extends baseDAO{
     }
 
     public ArrayList<OrderInfo> findOrderInfo(String sql, Object[] params) {
-        return findObjs(sql, params,Order.class);
+        return findObjs(sql, params,OrderInfo.class);
     }
 
 

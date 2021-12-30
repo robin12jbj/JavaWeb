@@ -90,11 +90,25 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="MenuManage.jsp" class="nav-link">
-                            <p>
-                                菜品管理
-                            </p>
+                        <a href="#" class="nav-link">
+                            <p>菜品管理<i class="right fas fa-angle-left"></i></p>
                         </a>
+                        <ul class="nav nav-treeview" style="display: none">
+                            <li class="nav-item">
+                                <a href="MenuManage.jsp" class="nav-link">
+                                    <p>
+                                        菜品管理
+                                    </p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="upload.html" class="nav-link">
+                                    <p>
+                                        添加菜品
+                                    </p>
+                                </a>
+                            </li>
+                        </ul>
                     </li>
                     <li class="nav-item">
                         <a href="OrderManage.jsp" class="nav-link">
