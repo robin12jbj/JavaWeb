@@ -34,6 +34,9 @@ public class DishAdd extends HttpServlet {
         System.out.println(dishdescrp);
         System.out.println(myfilename);
         System.out.println(material);
+        //测试成功
+        DishDAO.insertDish( dishid, dishname,dishprice,dishdescrp,myfilename,material);
+        response.sendRedirect("MenuManage.jsp");
 
 
     }
