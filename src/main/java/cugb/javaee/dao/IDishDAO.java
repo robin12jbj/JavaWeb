@@ -29,4 +29,5 @@ public interface IDishDAO {
 	int deleteDish(int dishid);
 	public int insertDish(int dishid,String dishname,Double dishprice,String dishdescrp,String dishimag,String material);
 
+
 }

@@ -187,11 +187,11 @@
                                         </div>
                                     </div>
                                     <div class="row">
-                                        <%
-                                        IDishDAO dishDAO=new DishDAOMySQLImpl();
-                                            int nextdishid=dishDAO.findDishes().size()+1;
-                                        %>
-                                        <nav class="center-block"><input type="button" style="text-align: center" class="btn btn-info" data-toggle="modal" data-target="#myModal" value="添加" onclick="DefaultValue('<%=nextdishid%>')"></nav>
+                                        <nav class="center-block">
+                                            <a href="upload.html">
+                                            <input type="button" style="text-align: center" class="btn btn-info" value="添加菜品">
+                                            </a>
+                                        </nav>
                                     </div>
                                     <div class="row">
                                         <TR>
@@ -253,7 +253,7 @@
                     菜品编辑
                 </h4>
             </div>
-            <form name="editForm" action="DishControl">
+            <form name="editForm" action="DishControl" enctype="multipart/form-data" method="get">
                 <div class="modal-body">
                     <div class="form-group">
                         <label for="dishid">菜品编号</label>
@@ -272,8 +272,12 @@
                         <input type="text" id="dishprice" name="dishprice" class="form-control" placeholder="菜品价格" >
                     </div>
                     <div class="form-group">
-                        <label for="dishimag">菜品图片</label>
+                        <label for="dishimag">菜品图片相对路径</label>
                         <input type="text" id="dishimag" name="dishimag" class="form-control" placeholder="菜品图片" >
+                    </div>
+                    <div class="form-group">
+                        <label for="image">菜品图片上传</label>
+                        <input type="file" name="file1" size="40" id="image" class="form-control">
                     </div>
                     <div class="form-group">
                         <label for="material">原料</label>

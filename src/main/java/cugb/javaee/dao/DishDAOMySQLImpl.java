@@ -50,11 +50,11 @@ public class DishDAOMySQLImpl extends baseDAO implements IDishDAO {
 		return updateObj(sql,params);
 	}
 
-    @Override
-    public int insertDish(int dishid,String dishname,Double dishprice,String dishdescrp,String dishimag,String material) {
+	@Override
+	public int insertDish(int dishid, String dishname, Double dishprice, String dishdescrp, String dishimag, String material) {
 		String	sql="insert into dish values(?,?,?,?,?,?)";
 		Object[] params={dishid,dishname,dishprice,dishdescrp,dishimag,material};
-        return updateObj(sql,params);
-    }
+		return updateObj(sql,params);
+	}
 
 }
