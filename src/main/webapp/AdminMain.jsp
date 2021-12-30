@@ -20,7 +20,6 @@
     <link rel="stylesheet" href="plugins/icheck-bootstrap/icheck-bootstrap.min.css">
     <!-- Theme style -->
     <link rel="stylesheet" href="dist/css/adminlte.min.css">
-
 </head>
 <body>
 <%
@@ -94,14 +93,14 @@
                             <p>菜品管理<i class="right fas fa-angle-left"></i></p>
                         </a>
                         <ul class="nav nav-treeview" style="display: none">
-                            <li class="nav-item">
+                            <li class="nav-item" style="padding-left: 20px">
                                 <a href="MenuManage.jsp" class="nav-link">
                                     <p>
                                         菜品管理
                                     </p>
                                 </a>
                             </li>
-                            <li class="nav-item">
+                            <li class="nav-item" style="padding-left: 20px">
                                 <a href="upload.html" class="nav-link">
                                     <p>
                                         菜品添加

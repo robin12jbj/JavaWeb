@@ -20,12 +20,6 @@
     <link rel="stylesheet" href="plugins/icheck-bootstrap/icheck-bootstrap.min.css">
     <!-- Theme style -->
     <link rel="stylesheet" href="dist/css/adminlte.min.css">
-    <!-- Bootstrap -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
-    <!-- jQuery (Bootstrap 的所有 JavaScript 插件都依赖 jQuery，所以必须放在前边) -->
-    <script src="https://cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js" integrity="sha384-nvAa0+6Qg9clwYCGGPpDQLVpLNn0fRaROjHqs13t4Ggj3Ez50XnGQqc/r8MhnRDZ" crossorigin="anonymous"></script>
-    <!-- 加载 Bootstrap 的所有 JavaScript 插件。你也可以根据需要只加载单个插件。 -->
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd" crossorigin="anonymous"></script>
     <script>
         function Value(userid,username,userpassword) {
             $("#userid").val(userid);
@@ -92,11 +86,25 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="MenuManage.jsp" class="nav-link">
-                            <p>
-                                菜品管理
-                            </p>
+                        <a href="#" class="nav-link">
+                            <p>菜品管理<i class="right fas fa-angle-left"></i></p>
                         </a>
+                        <ul class="nav nav-treeview" style="display: none">
+                            <li class="nav-item" style="padding-left: 20px">
+                                <a href="MenuManage.jsp" class="nav-link">
+                                    <p>
+                                        菜品管理
+                                    </p>
+                                </a>
+                            </li>
+                            <li class="nav-item" style="padding-left: 20px">
+                                <a href="upload.html" class="nav-link">
+                                    <p>
+                                        菜品添加
+                                    </p>
+                                </a>
+                            </li>
+                        </ul>
                     </li>
                     <li class="nav-item">
                         <a href="OrderManage.jsp" class="nav-link">
@@ -166,7 +174,7 @@
                                                         <td class="sorting-1">
                                                             <input type="button" class="btn btn-success" name="<%=users.get(i).getUserid()%>" data-toggle="modal" data-target="#myModal" value="编辑"
                                                                    onclick="Value('<%=users.get(i).getUserid()%>','<%=users.get(i).getUsername()%>','<%=users.get(i).getPwd()%>')">
-                                                            <a href="UserControl?action=delete&userid=<%=users.get(i).getUserid()%>"> <input type="button" value="删除"></a>
+                                                            <a href="UserControl?action=delete&userid=<%=users.get(i).getUserid()%>"> <input type="button" class="btn btn-danger" value="删除"></a>
                                                         </td>
                                                     </tr>
                                                     <%
@@ -176,19 +184,19 @@
                                             </table>
                                         </div>
                                     </div>
-                                    <div class="row">
+                                    <div class="row" style="margin-left:40%">
                                         <TR>
                                             <%--下面为分页功能--%>
                                             <TD align="center">
-                                                <nav class="center-block" aria-label="Page navigation">
+                                                <nav class="center-block">
                                                     <ul class="pagination">
-                                                        <li>
-                                                            <a id="btnTopPage"
+                                                        <li class="page-item">
+                                                            <a id="btnTopPage" class="page-link"
                                                                href="UserManage.jsp?&pageNo=<%=pageModel.getTop()%>"
                                                                title="首页">|&lt;&lt; </a>&nbsp;
                                                         </li>
-                                                        <li>
-                                                            <a id="btnPreviousPage"
+                                                        <li class="page-item">
+                                                            <a id="btnPreviousPage" class="page-link"
                                                                href="UserManage.jsp?&pageNo=<%=pageModel.getPrev()%>"
                                                                title="上页" aria-label="Previous"><span aria-hidden="true">&laquo;</span></a>
                                                         </li>
@@ -197,18 +205,18 @@
                                                             while(j<pageModel.getTotalPages()){
 
                                                         %>
-                                                        <li <% if(pageModel.getPageNo()==j+1){ %> class="active" <%} %> ><a><%=j+1%></a></li>
+                                                        <li class="page-item <% if(pageModel.getPageNo()==j+1){ %> active <%} %>" ><a class="page-link"><%=j+1%></a></li>
                                                         <%
                                                                 j++;
                                                             }
                                                         %>
-                                                        <li>
-                                                            <a id="btnNextPage"
+                                                        <li class="page-item">
+                                                            <a id="btnNextPage" class="page-link"
                                                                href="UserManage.jsp?&pageNo=<%=pageModel.getNext()%>"
                                                                title="下页" aria-label="Next"><span aria-hidden="true">&raquo;</span></a>
                                                         </li>
-                                                        <li>
-                                                            <a id="btnBottomPage"
+                                                        <li class="page-item">
+                                                            <a id="btnBottomPage" class="page-link"
                                                                href="UserManage.jsp?&pageNo=<%=pageModel.getBottom()%>"
                                                                title="尾页"> &gt;&gt;|</a>
                                                         </li>
