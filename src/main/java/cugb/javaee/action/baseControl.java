@@ -6,7 +6,7 @@ import org.apache.log4j.Logger;
 
 public abstract class baseControl extends HttpServlet {
 	/**
-	 * 日志工具
+	 * 鏃ュ織宸ュ叿
 	 */
 	protected Logger logger = Logger.getLogger(getClass());
 	

@@ -154,9 +154,10 @@
         <ul class="pager">
             <li class="previous"><p align="center">总价：<%=totalPricestr%></p></li>
             <li class="next">
-                <form action="successpay.jsp">
+                <form action="alipay">
 
-                    <input class="btn btn-success" type="submit" class="btn btn-default" value="结算" onclick="alert('支付成功')">
+                    <input class="btn btn-success" type="submit" class="btn btn-default" value="结算">
+                    <input type="hidden" name="price" value="<%=totalPricestr%>" >
                 </form>
             </li>
         </ul>

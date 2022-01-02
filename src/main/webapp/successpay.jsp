@@ -7,6 +7,14 @@
 <%@ page import="cugb.javaee.dao.OrderDAO" %>
 <%@ page import="cugb.javaee.dao.OrderInfoDAO" %>
 <%@ page import="java.io.PrintWriter" %>
+<%@ page import="com.alipay.api.AlipayClient" %>
+<%@ page import="com.alipay.api.DefaultAlipayClient" %>
+<%@ page import="com.alipay.api.request.AlipayTradePagePayRequest" %>
+<%@ page import="com.alipay.api.domain.AlipayTradePagePayModel" %>
+<%@ page import="java.util.UUID" %>
+<%@ page import="com.alipay.api.response.AlipayTradePagePayResponse" %>
+<%@ page import="com.sinosoft.config.AlipayConfig" %>
+<%@ page import="com.alipay.api.AlipayApiException" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -15,6 +23,8 @@
 <%--展示订单交易成功界面--%>
 <body>
 <%
+
+    //支付宝结算成功，添加入数据库
 //通过session中的cart
     Cart myCart=(Cart)(session.getAttribute("menus"));//我的购物车
     Set myset=myCart.getMenus().keySet();
@@ -43,8 +53,8 @@
     }
     //信息添加完毕
     session.setAttribute("menus",new Cart());//删除购物车，添加新的购物车
-//    PrintWriter tip=response.getWriter();
-//    tip.println("<script language=javascript>alert('支付成功!');</script>");
+    PrintWriter tip=response.getWriter();
+    tip.println("<script language=javascript>alert('支付成功!');</script>");
     RequestDispatcher rd = request.getRequestDispatcher("/logincheck?action=pagelist&pageNo=1");
     rd.forward(request, response);
 

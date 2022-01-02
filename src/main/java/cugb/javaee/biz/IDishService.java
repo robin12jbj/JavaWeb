@@ -6,10 +6,10 @@ import java.util.ArrayList;
 public interface IDishService {
 
 	/***
-	 * ·ÖÒ³²éÑ¯
-	 * @param pageNo µ±Ç°Ò³Âë
-	 * @param pageSize Ò³Ãæ´óĞ¡
-	 * @return µ±Ç°Ò³µÄËùÓĞ¼ÇÂ¼
+	 * åˆ†é¡µæŸ¥è¯¢
+	 * @param pageNo å½“å‰é¡µç 
+	 * @param pageSize é¡µé¢å¤§å°
+	 * @return å½“å‰é¡µçš„æ‰€æœ‰è®°å½•
 	 */
 	public ArrayList findDish4PageList(int pageNo, int pageSize);
 	
@@ -20,7 +20,7 @@ public interface IDishService {
 	public int getTotalRecords();
 
 
-	public ArrayList findDishes();//³É¹¦
+	public ArrayList findDishes();//æˆåŠŸ
 
-	public ArrayList findDishesBy(int dishid);//¸ù¾İ²ËºÅÕÒµ½²ËÆ·ÏêÏ¸ÄÚÈİ
+	public ArrayList findDishesBy(int dishid);//æ ¹æ®èœå·æ‰¾åˆ°èœå“è¯¦ç»†å†…å®¹
 }

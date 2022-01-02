@@ -4,13 +4,13 @@ import java.util.ArrayList;
 
 public class PageModel<T> {
 
-	// Ã¿Ò³ÏÔÊ¾¼ÇÂ¼Êı
+	// æ¯é¡µæ˜¾ç¤ºè®°å½•æ•°
 	private int pageSize;
-	// ±íÖĞ¼ÇÂ¼Êı
+	// è¡¨ä¸­è®°å½•æ•°
 	private int totalRecords;
-	// µ±Ç°Ò³Âë
+	// å½“å‰é¡µç 
 	private int pageNo;
-	// µ±Ç°Ò³ÖĞËùÓĞ¼ÇÂ¼
+	// å½“å‰é¡µä¸­æ‰€æœ‰è®°å½•
 	private ArrayList<T> list;
 	
 	
@@ -46,7 +46,7 @@ public class PageModel<T> {
 		this.list = list;
 	}
 	/***
-	 * ¼ÆËãÒ³ÊıÁ¿
+	 * è®¡ç®—é¡µæ•°é‡
 	 * 
 	 * @return
 	 */
@@ -55,7 +55,7 @@ public class PageModel<T> {
 	}
 
 	/***
-	 * Ê×Ò³
+	 * é¦–é¡µ
 	 * 
 	 * @return
 	 */
@@ -64,7 +64,7 @@ public class PageModel<T> {
 	}
 
 	/***
-	 * ÏÂÒ»Ò³
+	 * ä¸‹ä¸€é¡µ
 	 * 
 	 * @return
 	 */
@@ -77,7 +77,7 @@ public class PageModel<T> {
 	}
 
 	/***
-	 * ÉÏÒ»Ò³
+	 * ä¸Šä¸€é¡µ
 	 * 
 	 * @return
 	 */
@@ -89,7 +89,7 @@ public class PageModel<T> {
 	}
 
 	/***
-	 * Î²Ò³
+	 * å°¾é¡µ
 	 * 
 	 * @return
 	 */

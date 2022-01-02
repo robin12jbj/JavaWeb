@@ -42,13 +42,13 @@ public class LoginCheck extends baseControl {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		String action = request.getParameter("action");
-		if (action.equals("loginctrl")) {//Ê×Ò³µÇÂ½
+		if (action.equals("loginctrl")) {//é¦–é¡µç™»é™†
 			request.setCharacterEncoding("UTF-8");
 			String username = request.getParameter("loginName");
 			String password = request.getParameter("loginPass");
 			logger.debug(username + "," + password);
 			HttpSession session = request.getSession();
-			//´Ë´¦´´½¨µÄÊÇÊµÏÖ½Ó¿ÚµÄÀàUserServiceImpl
+			//æ­¤å¤„åˆ›å»ºçš„æ˜¯å®ç°æ¥å£çš„ç±»UserServiceImpl
 			IUserService userserv = (IUserService) DAOFactory.newInstance("IUserService");
 			Users loginuser = new Users();
 			loginuser.setUsername(username);
@@ -58,7 +58,7 @@ public class LoginCheck extends baseControl {
 			if (userserv.validateUser(loginuser)) {
 				UsersDAOMySQLImpl usersDAOMySQL=new UsersDAOMySQLImpl();
 				loginuser=usersDAOMySQL.findUsersBy(loginuser).get(0);
-				//»ñÈ¡µ½º¬ÓĞuseridµÄloginuser
+				//è·å–åˆ°å«æœ‰useridçš„loginuser
 				int pageNo = 1;
 				session.setAttribute("user",loginuser);
 				session.setAttribute("menus",new Cart());
@@ -66,11 +66,11 @@ public class LoginCheck extends baseControl {
 			} else {
 				request.getRequestDispatcher("/login.html").forward(request, response);
 			}
-		} else if (action.equals("pagelist")) {//·ÖÒ³ÏÔÊ¾
+		} else if (action.equals("pagelist")) {//åˆ†é¡µæ˜¾ç¤º
 				int pageNo = Integer.parseInt(request.getParameter("pageNo"));
-				//»ñÈ¡Ò³ÊıĞÅÏ¢
+				//è·å–é¡µæ•°ä¿¡æ¯
 				pageList(request, response, pageNo);
-		}else if(action.equals("admin")){//¹ÜÀíÔ±µÇÂ¼
+		}else if(action.equals("admin")){//ç®¡ç†å‘˜ç™»å½•
 			int pageNo = 1;
 			String adminname = request.getParameter("loginName");
 			String password = request.getParameter("loginPass");
@@ -80,8 +80,8 @@ public class LoginCheck extends baseControl {
 			logger.debug(adminname + "," + password);
 			IAdminDAO adminDAO=(IAdminDAO) DAOFactory.newInstance("IAdminDAO");
 			if(adminDAO.findAdminBy(admin).size()>0){
-				//¹ÜÀíÔ±ÕËºÅ´æÔÚ
-				//µÇÂ¼¹ÜÀíÔ±Ö÷½çÃæ
+				//ç®¡ç†å‘˜è´¦å·å­˜åœ¨
+				//ç™»å½•ç®¡ç†å‘˜ä¸»ç•Œé¢
 				pageList(request, response, pageNo);
 				response.sendRedirect("AdminMain.jsp");
 			}
@@ -92,13 +92,13 @@ public class LoginCheck extends baseControl {
 	private void pageList(HttpServletRequest request, HttpServletResponse response, int pageNo)
 			throws ServletException, IOException {
 		IDishService dishserv = (IDishService) DAOFactory.newInstance("IDishService");
-		ArrayList<Dish> dishlist = dishserv.findDish4PageList(pageNo, 6);//»ñµÃ²ËÆ·µÄÊı×é
+		ArrayList<Dish> dishlist = dishserv.findDish4PageList(pageNo, 6);//è·å¾—èœå“çš„æ•°ç»„
 		logger.debug(dishlist);
-		int totalRecords = dishserv.getTotalRecords();//»ñÈ¡×Ü¹²²ËÆ·ÊıÁ¿
+		int totalRecords = dishserv.getTotalRecords();//è·å–æ€»å…±èœå“æ•°é‡
 		logger.debug(totalRecords);
-		PageModel<Dish> pageModel = new PageModel<Dish>(totalRecords, pageNo, 6, dishlist);//¹¹ÔìPageModel<Dish>
+		PageModel<Dish> pageModel = new PageModel<Dish>(totalRecords, pageNo, 6, dishlist);//æ„é€ PageModel<Dish>
 		request.setAttribute("pageModel", pageModel);
-		// Ìø×ªµ½show.jspÒ³Ãæ
+		// è·³è½¬åˆ°show.jspé¡µé¢
 		RequestDispatcher rd = request.getRequestDispatcher("/show.jsp");
 		rd.forward(request, response);
 	}
